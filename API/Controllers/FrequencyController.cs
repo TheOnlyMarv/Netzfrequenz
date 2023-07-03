@@ -24,5 +24,13 @@ namespace API.Controllers
 
             return readings;
         }
+
+        [HttpGet("current")]
+        public async Task<ActionResult<FreqReading>> GetLatestReading()
+        {
+            var latestId = await _context.Readings.MaxAsync(x => x.Id);
+            return await _context.Readings.FirstOrDefaultAsync(x => x.Id == latestId);
+            
+        }
     }
 }

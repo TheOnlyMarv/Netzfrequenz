@@ -478,3 +478,6 @@ $RECYCLE.BIN/
 API/appsettings.json
 API/frequency.db
 .vscode/
+API/frequency.db-shm
+.gitignore
+API/frequency.db-wal
