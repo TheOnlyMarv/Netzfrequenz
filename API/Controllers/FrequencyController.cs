@@ -11,12 +11,14 @@ namespace API.Controllers
     {
         private readonly DataContext _context;
 
-        // DataContext represents the db session inside controller class
         public FrequencyController(DataContext context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// This request gets all frequency readings from the database.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FreqReading>>> GetReadings()
         {
@@ -25,12 +27,29 @@ namespace API.Controllers
             return readings;
         }
 
-        [HttpGet("current")]
+        /// <summary>
+        /// This request gets the latest frequency reading from the database.
+        /// </summary>
+        [HttpGet("latest")]
         public async Task<ActionResult<FreqReading>> GetLatestReading()
         {
             var latestId = await _context.Readings.MaxAsync(x => x.Id);
             return await _context.Readings.FirstOrDefaultAsync(x => x.Id == latestId);
             
+        }
+
+        /// <summary>
+        /// This request gets the current frequency value from netzfrequenz.info and stores it in the database.
+        /// </summary>
+        [HttpGet("update")]
+        public string Get()
+        {
+            HttpClient http = new HttpClient();
+            var newFreqValue = http.GetAsync("https://www.netzfrequenz.info/json/act.json").Result.Content.ReadAsStringAsync().Result;
+            FreqReading newReading = new FreqReading{ Timestamp = DateTime.Now, Frequency = float.Parse(newFreqValue)};
+            _context.Add(newReading);
+            _context.SaveChanges();
+            return newFreqValue;
         }
     }
 }
