@@ -7,7 +7,7 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-        public class FrequencyController : ControllerBase
+    public class FrequencyController : ControllerBase
     {
         private readonly DataContext _context;
 
@@ -42,11 +42,14 @@ namespace API.Controllers
         /// This request gets the current frequency value from netzfrequenz.info and stores it in the database.
         /// </summary>
         [HttpGet("update")]
-        public string Get()
+        public float Update()
         {
+            // Make request to get latest frequency value.
             HttpClient http = new HttpClient();
-            var newFreqValue = http.GetAsync("https://www.netzfrequenz.info/json/act.json").Result.Content.ReadAsStringAsync().Result;
-            FreqReading newReading = new FreqReading{ Timestamp = DateTime.Now, Frequency = float.Parse(newFreqValue)};
+            var newFreqValue = float.Parse(http.GetAsync("https://www.netzfrequenz.info/json/act.json").Result.Content.ReadAsStringAsync().Result);
+
+            // Store result in db.
+            FreqReading newReading = new FreqReading{ Timestamp = DateTime.Now, Frequency = newFreqValue};
             _context.Add(newReading);
             _context.SaveChanges();
             return newFreqValue;

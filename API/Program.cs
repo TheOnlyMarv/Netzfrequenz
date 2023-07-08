@@ -15,4 +15,18 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.MapControllers();
 
+// TO DO: Where does this go?
+async Task RunInBackground(TimeSpan timeSpan)
+{
+    var periodicTimer = new PeriodicTimer(timeSpan);
+    while (await periodicTimer.WaitForNextTickAsync())
+    {
+        HttpClient http = new HttpClient();
+        var latestFreq = http.GetAsync("https://localhost:5001/api/frequency/update").Result.Content.ReadAsStringAsync().Result;
+        System.Console.WriteLine(latestFreq);
+    }
+}
+
+RunInBackground(TimeSpan.FromSeconds(5));
+
 app.Run();
