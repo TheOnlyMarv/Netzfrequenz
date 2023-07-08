@@ -1,3 +1,7 @@
 <h1>{{title}}</h1>
 
-<ul></ul>
+<ul>
+  <li *ngFor="let reading of readings">
+    {{reading.timestamp}} - {{reading.frequency}}
+  </li>
+</ul>
