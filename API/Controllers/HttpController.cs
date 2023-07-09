@@ -1,3 +1,4 @@
+using System.Net;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -8,24 +9,25 @@ namespace API.Controllers
     public class HttpController
     {
         
-        // private readonly DataContext _context;
-
-        // public HttpController(DataContext context)
-        // {
-        //     _context = context;
-        // }
-
-        public float UpdateDb(DataContext context)
+        public async Task<float> UpdateDb(DataContext context)
         {
             // Make request to get latest frequency value.
             HttpClient http = new HttpClient();
-            var newFreqValue = float.Parse(http.GetAsync("https://www.netzfrequenz.info/json/act.json").Result.Content.ReadAsStringAsync().Result);
+            try {
+                HttpResponseMessage response = await http.GetAsync("https://www.netzfrequenz.info/json/act.json");
+                response.EnsureSuccessStatusCode();
 
-            // Store result in db.
-            FreqReading newReading = new FreqReading{ Timestamp = DateTime.Now, Frequency = newFreqValue};
-            context.Add(newReading);
-            context.SaveChanges();
-            return newFreqValue;
+                // Store result in db.
+                float newFreqValue = float.Parse(response.Content.ReadAsStringAsync().Result);
+                FreqReading newReading = new FreqReading{ Timestamp = DateTime.Now, Frequency = newFreqValue};
+                context.Add(newReading);
+                context.SaveChanges();
+                return newFreqValue;
+            }
+            catch(HttpRequestException e) {
+                Console.WriteLine(e.Message);
+                throw;
+            }
         }
 
         public async Task<ActionResult<IEnumerable<FreqReading>>> GetReadings(DataContext context)

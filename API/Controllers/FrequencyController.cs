@@ -40,9 +40,9 @@ namespace API.Controllers
         /// This request gets the current frequency value from netzfrequenz.info and stores it in the database.
         /// </summary>
         [HttpGet("update")]
-        public float Update()
+        public async Task<float> Update()
         {
-            return controller.UpdateDb(_context);
+            return await controller.UpdateDb(_context);
         }
     }
 }
