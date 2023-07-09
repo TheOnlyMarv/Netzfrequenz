@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ namespace API.Controllers
     public class FrequencyController : ControllerBase
     {
         private readonly DataContext _context;
+        HttpController controller = new HttpController();
 
         public FrequencyController(DataContext context)
         {
@@ -22,9 +24,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FreqReading>>> GetReadings()
         {
-            var readings = await _context.Readings.ToListAsync();
-
-            return readings;
+            return await controller.GetReadings(_context);
         }
 
         /// <summary>
@@ -33,9 +33,7 @@ namespace API.Controllers
         [HttpGet("latest")]
         public async Task<ActionResult<FreqReading>> GetLatestReading()
         {
-            var latestId = await _context.Readings.MaxAsync(x => x.Id);
-            return await _context.Readings.FirstOrDefaultAsync(x => x.Id == latestId);
-            
+            return await controller.GetLatestReading(_context);
         }
 
         /// <summary>
@@ -44,15 +42,7 @@ namespace API.Controllers
         [HttpGet("update")]
         public float Update()
         {
-            // Make request to get latest frequency value.
-            HttpClient http = new HttpClient();
-            var newFreqValue = float.Parse(http.GetAsync("https://www.netzfrequenz.info/json/act.json").Result.Content.ReadAsStringAsync().Result);
-
-            // Store result in db.
-            FreqReading newReading = new FreqReading{ Timestamp = DateTime.Now, Frequency = newFreqValue};
-            _context.Add(newReading);
-            _context.SaveChanges();
-            return newFreqValue;
+            return controller.UpdateDb(_context);
         }
     }
 }
