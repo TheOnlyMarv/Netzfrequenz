@@ -3,6 +3,7 @@ using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 
 namespace API.Controllers
 {
@@ -32,7 +33,11 @@ namespace API.Controllers
 
         public async Task<ActionResult<IEnumerable<FreqReading>>> GetReadings(DataContext context)
         {
-            return await context.Readings.ToListAsync();
+            var readings = context.Readings
+                .OrderByDescending(x => x.Timestamp)
+                .Take(10)
+                .ToList();
+            return readings;
         }
 
         public async Task<ActionResult<FreqReading>> GetLatestReading(DataContext context)

@@ -1,7 +1,9 @@
 <h1>{{title}}</h1>
+<h2>{{latest.frequency}} Hz</h2>
 
+<h2>Historischer Verlauf</h2>
 <ul>
   <li *ngFor="let reading of readings">
-    {{reading.timestamp}} - {{reading.frequency}}
+    {{reading.frequency}} Hz ({{reading.timestamp}}) 
   </li>
 </ul>
