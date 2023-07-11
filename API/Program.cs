@@ -24,8 +24,8 @@ async Task UpdateFrequencyReadings(TimeSpan timeSpan)
     while (await periodicTimer.WaitForNextTickAsync())
     {
         HttpClient http = new HttpClient();
-        var latestFreq = http.GetAsync("https://localhost:5001/api/frequency/update").Result.Content.ReadAsStringAsync().Result;
-        System.Console.WriteLine(latestFreq);
+        var currentFreq = http.GetAsync("https://localhost:5001/api/frequency/update").Result.Content.ReadAsStringAsync().Result;
+        System.Console.WriteLine(currentFreq);
     }
 }
 

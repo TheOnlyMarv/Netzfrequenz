@@ -1,50 +1,49 @@
-using System.Net;
+using System.Diagnostics.Contracts;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
 
 namespace API.Controllers
 {
-    public class HttpController
+    [ApiController]
+    [Route("api/[controller]")]
+    public class HttpController : ControllerBase
     {
-        
-        public async Task<float> UpdateDb(DataContext context)
-        {
-            // Make request to get latest frequency value.
-            HttpClient http = new HttpClient();
-            try {
-                HttpResponseMessage response = await http.GetAsync("https://www.netzfrequenz.info/json/act.json");
-                response.EnsureSuccessStatusCode();
+        private readonly DataContext _context;
+        FrequencyController controller = new FrequencyController();
 
-                // Store result in db.
-                float newFreqValue = float.Parse(response.Content.ReadAsStringAsync().Result);
-                FreqReading newReading = new FreqReading{ Timestamp = DateTime.Now, Frequency = newFreqValue};
-                context.Add(newReading);
-                context.SaveChanges();
-                return newFreqValue;
-            }
-            catch(HttpRequestException e) {
-                Console.WriteLine(e.Message);
-                throw;
-            }
+        public HttpController(DataContext context)
+        {
+            _context = context;
         }
 
-        public async Task<ActionResult<IEnumerable<FreqReading>>> GetReadings(DataContext context)
+        /// <summary>
+        /// This request gets limited list of frequency readings from the database.
+        /// </summary>
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<FreqReading>>> GetReadings()
         {
-            var readings = context.Readings
-                .OrderByDescending(x => x.Timestamp)
-                .Take(10)
-                .ToList();
-            return readings;
+            var limit = 10;
+            return await controller.GetReadings(_context, limit);
         }
 
-        public async Task<ActionResult<FreqReading>> GetLatestReading(DataContext context)
+        /// <summary>
+        /// This request gets the latest frequency reading from the database.
+        /// </summary>
+        [HttpGet("latest")]
+        public async Task<ActionResult<FreqReading>> GetLatestReading()
         {
-            var latestId = await context.Readings.MaxAsync(x => x.Id);
-            return await context.Readings.FirstOrDefaultAsync(x => x.Id == latestId);
+            return await controller.GetLatestReading(_context);
         }
 
+        /// <summary>
+        /// This request gets the current frequency value from netzfrequenz.info and stores it in the database.
+        /// </summary>
+        [HttpGet("update")]
+        public async Task<float> Update()
+        {
+            return await controller.UpdateDb(_context);
+        }
     }
 }
