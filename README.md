@@ -9,7 +9,7 @@ Die Web-App erfragt in regelmäßigen Abständen (aktuell alle 5 Sekunden, spät
 
 ## Starten der API
 
-Stelle sicher, dass `.NET` (version 7.0), inklusive des CLI tools, installiert ist.
+Stelle sicher, dass `.NET` (version 7.0), inklusive des CLI tools, installiert sind.
 Erstelle zunächst die Datenbank mit zugehörigen Migrationen. Navigiere dazu innerhalb des API Orders:
 
 ```
@@ -27,7 +27,12 @@ Die verschiedenen Endpunkte können im Browser oder mithilfe von Postman unter `
 
 ## Starten des Clients
 
-Stelle sicher, dass [Angular CLI](https://github.com/angular/angular-cli) (version 14.2.11) installiert ist.
+Stelle sicher, dass [Angular CLI](https://github.com/angular/angular-cli) (version 14.2.11) und Node (version 16.6.0) installiert sind.
+
+Navigiere in den `client` Ordner und installiere die Dependencies mit npm:
+```
+npm install
+```
 
 Dann starte den Client mit:
 
