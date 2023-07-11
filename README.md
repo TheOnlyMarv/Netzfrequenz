@@ -1,4 +1,5 @@
-# Aktuelle Netzfrequenz: Informationen zu und Visualisierung der Frequenz im europäischen Verbundnetz
+# Aktuelle Netzfrequenz
+Informationen zu und Visualisierung der Frequenz im europäischen Verbundnetz.
 
 ## Überblick
 
