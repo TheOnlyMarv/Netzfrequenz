@@ -40,7 +40,7 @@ Dann starte den Client mit:
 ng serve
 ```
 
-Das Frontend kann jetzt unter `http://localhost:4200/` aufgerufen werden.
+Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 
 ## Nächste Schritte
