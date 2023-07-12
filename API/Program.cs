@@ -1,10 +1,12 @@
 using API.Data;
+using API.HostedServices;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddHostedService<UpdateFrequencyBackgroundService>();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(opt => 
 {
@@ -16,19 +18,5 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 app.MapControllers();
-
-// TO DO: Where does this go?
-async Task UpdateFrequencyReadings(TimeSpan timeSpan)
-{
-    var periodicTimer = new PeriodicTimer(timeSpan);
-    while (await periodicTimer.WaitForNextTickAsync())
-    {
-        HttpClient http = new HttpClient();
-        var currentFreq = http.GetAsync("https://localhost:5001/api/frequency/update").Result.Content.ReadAsStringAsync().Result;
-        System.Console.WriteLine(currentFreq);
-    }
-}
-
-UpdateFrequencyReadings(TimeSpan.FromSeconds(5));
 
 app.Run();
