@@ -9,23 +9,10 @@ import { ChartService } from '../charts/chart.service';
   styleUrls: ['./line-chart.component.css']
 })
 export class LineChartComponent implements OnInit {
-
-  // constructor(private http: HttpClient) {}
-  // readings: any;
-
-  // ngOnInit(): void {
-  //   this.http.get('https://localhost:5001/api/frequency').subscribe({
-  //     next: response => this.readings = response,
-  //     error: error => console.log(error),
-  //     complete: () => console.log("Request has completed"),
-  //   });
-  //   this.createChart();
-  // }
   public chart: any;
   private chartInfo: any;
   private labeldata: any[] = [];
   private realdata: any[] = [];
-  private colordata: any[] = [];
 
   constructor(public service: ChartService) {}
 
@@ -62,26 +49,3 @@ export class LineChartComponent implements OnInit {
     });
   }
 }
-
-
-  // createChart(labeldata: any, realdata: any, colordata: any){
-  //   this.chart = new Chart("FrequencyChart", {
-  //     type: 'line', 
-
-  //     data: {// values on X-Axis
-  //       labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-  //                '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ], 
-  //        datasets: [
-  //         {
-  //           label: "Netzfrequenz",
-  //           data: ['542', '542', '536', '327', '17',
-  //                  '0.00', '538', '541'],
-  //           backgroundColor: 'limegreen'
-  //         }  
-  //       ]
-  //     },
-  //     options: {
-  //       aspectRatio:2.5
-  //     }
-  //   });
-  // }
