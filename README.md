@@ -50,7 +50,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - ~~Erstellen eines Line-Charts mit aktuellen Frequenzmesswerten~~
 - Sichtbarmachen des 50Hz Richtwertes:
     - ~~Linie bei 50Hz~~
-    - Chart hat feste Werte auf y-Achse mit 50Hz in der Mitte 
+    - 50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse
 - Erstellen der Maßnahmekategorien und Beschreibungen
 - Möglichkeiten der Informationsdarstellung: 
     - Einfärben des Charts oder der Chartpunkte entsprechen den getroffenen Maßnahmen mit Legende unter/neben Chart
