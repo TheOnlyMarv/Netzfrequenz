@@ -48,11 +48,12 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 1. Design und Ausbau des Angular Frontends
 
 - ~~Erstellen eines Line-Charts mit aktuellen Frequenzmesswerten~~
-- Sichtbarmachen des 50Hz Richtwertes:
+- ~~Sichtbarmachen des 50Hz Richtwertes:~~
     - ~~Linie bei 50Hz~~
     - ~~Linie bei Totband~~
     - ~~Linie bei Einsatz Regelenergie~~
-    - 50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse
+    - ~~50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse~~
+- Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Button zur Aktualisierung
 - Bessere Darstellung des Timestamps im Chart
 - Erstellen der Maßnahmekategorien und Beschreibungen
