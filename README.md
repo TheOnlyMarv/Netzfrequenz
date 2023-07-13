@@ -51,6 +51,8 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - Sichtbarmachen des 50Hz Richtwertes:
     - ~~Linie bei 50Hz~~
     - 50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse
+- Button zur Aktualisierung
+- Bessere Darstellung des Timestamps im Chart
 - Erstellen der Maßnahmekategorien und Beschreibungen
 - Möglichkeiten der Informationsdarstellung: 
     - Einfärben des Charts oder der Chartpunkte entsprechen den getroffenen Maßnahmen mit Legende unter/neben Chart
