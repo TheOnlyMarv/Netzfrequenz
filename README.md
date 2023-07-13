@@ -50,6 +50,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - ~~Erstellen eines Line-Charts mit aktuellen Frequenzmesswerten~~
 - Sichtbarmachen des 50Hz Richtwertes:
     - ~~Linie bei 50Hz~~
+    - ~~Linie bei Totband~~
     - 50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse
 - Button zur Aktualisierung
 - Bessere Darstellung des Timestamps im Chart
@@ -62,6 +63,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - Design des Headers, des Navigationsmenüs und des Hintergrunds
 - Hinzufügen einer zweiten Seite `Information` mit ausführlicheren Informationen zu den Balancemaßnahmen
 - Längerfristig sollte der regelmäßige Abruf der Daten vom Frontend gesteuert werden, indem der interne Endpoint `https://localhost:5001/api/frequency/update` sekündlich aufgerufen wird. Alternativ ist auch der Einsatz von Websockets denkbar.
+- Veröffentlichung auf Github
 
 2. Optimierung des Backends
 

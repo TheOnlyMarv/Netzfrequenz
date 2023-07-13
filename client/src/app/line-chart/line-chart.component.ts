@@ -42,13 +42,31 @@ export class LineChartComponent implements OnInit {
             backgroundColor: "rgba(0,0,0,1)"
           },
           {
-            label: "Sollwert",
+            label: "Richtwert",
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50),
             fill: false,
             pointRadius: 0.1,
             borderColor: "limegreen",
             backgroundColor: "limegreen"
-          }
+          },
+          {
+            label: "Toleranzbereich 'hoch'",
+            data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50.02),
+            fill: false,
+            pointRadius: 0.1,
+            borderColor: "orange",
+            backgroundColor: "white",
+            borderDash: [15, 3, 3, 3]
+          },
+          {
+            label: "Toleranzbereich 'niedrig'",
+            data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.98),
+            fill: false,
+            pointRadius: 0.1,
+            borderColor: "orange",
+            backgroundColor: "white",
+            borderDash: [5]
+          },
         ]
       },
       options: {
