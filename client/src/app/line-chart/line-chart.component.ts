@@ -39,7 +39,8 @@ export class LineChartComponent implements OnInit {
           {
             label: "Netzfrequenz",
             data: realdata,
-            backgroundColor: "rgba(0,0,0,1)"
+            backgroundColor: "rgba(0,0,0,1)",
+            borderColor: "gba(0,0,0,1)"
           },
           {
             label: "Richtwert",
@@ -56,7 +57,7 @@ export class LineChartComponent implements OnInit {
             pointRadius: 0.1,
             borderColor: "orange",
             backgroundColor: "white",
-            borderDash: [15, 3, 3, 3]
+            borderDash: [5]
           },
           {
             label: "Toleranzbereich 'niedrig'",
@@ -65,7 +66,25 @@ export class LineChartComponent implements OnInit {
             pointRadius: 0.1,
             borderColor: "orange",
             backgroundColor: "white",
+            borderDash: [20, 5]
+          },
+          {
+            label: "Einsatz negativer Regelenergie",
+            data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50.2),
+            fill: false,
+            pointRadius: 0.1,
+            borderColor: "rgba(255, 99, 71)",
+            backgroundColor: "white",
             borderDash: [5]
+          },
+          {
+            label: "Einsatz positiver Regelenergie",
+            data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.8),
+            fill: false,
+            pointRadius: 0.1,
+            borderColor: "rgba(255, 99, 71)",
+            backgroundColor: "white",
+            borderDash: [20, 5]
           },
         ]
       },
