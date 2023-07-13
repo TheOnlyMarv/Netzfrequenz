@@ -35,12 +35,20 @@ export class LineChartComponent implements OnInit {
 
       data: {
         labels: labeldata, 
-         datasets: [
+        datasets: [
           {
             label: "Netzfrequenz",
             data: realdata,
+            backgroundColor: "rgba(0,0,0,1)"
+          },
+          {
+            label: "Sollwert",
+            data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50),
+            fill: false,
+            pointRadius: 0.1,
+            borderColor: "limegreen",
             backgroundColor: "limegreen"
-          }  
+          }
         ]
       },
       options: {
