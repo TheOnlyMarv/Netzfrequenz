@@ -47,6 +47,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 1. Design und Ausbau des Angular Frontends
 
+- ~~Erstellen eines Line-Charts mit aktuellen Frequenzmesswerten~~
 - Sichtbarmachen des 50Hz Richtwertes:
     - ~~Linie bei 50Hz~~
     - Chart hat feste Werte auf y-Achse mit 50Hz in der Mitte 
