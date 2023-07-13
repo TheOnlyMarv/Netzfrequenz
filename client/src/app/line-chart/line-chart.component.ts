@@ -39,23 +39,23 @@ export class LineChartComponent implements OnInit {
           {
             label: "Netzfrequenz",
             data: realdata,
-            backgroundColor: "rgba(0,0,0,1)",
-            borderColor: "gba(0,0,0,1)"
+            backgroundColor: "rgba(0,0,0.7)",
+            borderColor: "rgba(0,0,0,0.6)"
           },
           {
             label: "Richtwert",
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50),
             fill: false,
             pointRadius: 0.1,
-            borderColor: "limegreen",
-            backgroundColor: "limegreen"
+            borderColor: "rgba(50,205,50,0.8)",
+            backgroundColor: "rgba(50,205,50,0.8)",
           },
           {
             label: "Toleranzbereich 'hoch'",
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50.02),
             fill: false,
             pointRadius: 0.1,
-            borderColor: "orange",
+            borderColor: "rgba(255,165,0,0.5)",
             backgroundColor: "white",
             borderDash: [5]
           },
@@ -64,7 +64,7 @@ export class LineChartComponent implements OnInit {
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.98),
             fill: false,
             pointRadius: 0.1,
-            borderColor: "orange",
+            borderColor: "rgba(255,165,0,0.5)",
             backgroundColor: "white",
             borderDash: [20, 5]
           },
@@ -73,7 +73,7 @@ export class LineChartComponent implements OnInit {
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50.2),
             fill: false,
             pointRadius: 0.1,
-            borderColor: "rgba(255, 99, 71)",
+            borderColor: "rgba(255,99,71,0.7)",
             backgroundColor: "white",
             borderDash: [5]
           },
@@ -82,7 +82,7 @@ export class LineChartComponent implements OnInit {
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.8),
             fill: false,
             pointRadius: 0.1,
-            borderColor: "rgba(255, 99, 71)",
+            borderColor: "rgba(255,99,71,0.7)",
             backgroundColor: "white",
             borderDash: [20, 5]
           },
