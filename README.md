@@ -47,6 +47,8 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 1. Design und Ausbau des Angular Frontends
 
+- ~~Button zur Aktualisierung~~
+- ~~Design des Headers, des Navigationsmenüs und des Hintergrunds~~
 - ~~Erstellen eines Line-Charts mit aktuellen Frequenzmesswerten~~
 - ~~Sichtbarmachen des 50Hz Richtwertes:~~
     - ~~Linie bei 50Hz~~
@@ -54,7 +56,6 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - ~~Linie bei Einsatz Regelenergie~~
     - ~~50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse~~
 - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
-- Button zur Aktualisierung
 - Bessere Darstellung des Timestamps im Chart
 - Erstellen der Maßnahmekategorien und Beschreibungen
 - Möglichkeiten der Informationsdarstellung: 
@@ -62,17 +63,16 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - Anzeigen der aktuellen Balancemaßnahmen durch Hoverstates oder Klick
     - Durch Klick auf Messpunkt im Graph Weiterleitung auf zweite Seite `Information`
 - Dynamisches Auffüllen und Animation des Frequenz Linecharts
-- Design des Headers, des Navigationsmenüs und des Hintergrunds
 - Hinzufügen einer zweiten Seite `Information` mit ausführlicheren Informationen zu den Balancemaßnahmen
 - Längerfristig sollte der regelmäßige Abruf der Daten vom Frontend gesteuert werden, indem der interne Endpoint `https://localhost:5001/api/frequency/update` sekündlich aufgerufen wird. Alternativ ist auch der Einsatz von Websockets denkbar.
 - Veröffentlichung auf Github
 
 2. Optimierung des Backends
 
+- ~~Refaktorierung von `Progam.cs`: Aktuell findet der sekündliche Abruf der aktuellen Messwerte der Frequenz direkt in `Program.cs` statt. Diese Funktion sollte ausgelagert werden, kurzfristig innerhalb der Web-API.~~
 - Refaktorierung des /update Endpunkts: 
     - Die aktuell verwendete Website `https://www.netzfrequenz.info/act/json` stellt nur den aktuellen Messwert der Frequenz, aber nicht den genauen Messzeitpunkt zur Verfügung. Als Zeitpunkt wird stattdessen der Moment des Speicherns in der Datenbank verwendet, was aufgrund von Latency nicht akkurat sein könnte. Stattdessen soll zukünftig sowohl der Messwert, als auch der Messzeitpunkt von `https://www.netzfrequenzmessung.de/verlauf` mithilfe von Webscrapping übernommen werden. 
     - Nach dieser Änderung soll der /update Endpunkt Zeitpunkt und Messwert bereitstellen (aktuell nur Messwert). 
     - In einem letzten Schritt übernimmt das Frontend den sekündlichen Aufruf des /update Endpunkts, dessen Ergebnisse in einem dynamisch erzeugten Line Chart dargestellt werden.
 - Refaktorierung des `Controllers` Ordners: Um den HttpController, der die Endpoints der Web-App beinhaltet, möglichst lesbar zu halten, wurden die Http Anfragen und Datenbankzugriffe in den `FrequencyController` ausgelagert. Hier gibt es vermutlich eine bessere und in C# übliche Weise der Strukturierung.
-- ~~Refaktorierung von `Progam.cs`: Aktuell findet der sekündliche Abruf der aktuellen Messwerte der Frequenz direkt in `Program.cs` statt. Diese Funktion sollte ausgelagert werden, kurzfristig innerhalb der Web-API.~~
 - Wechsel der Datenbank zu PostgreSQL und regelmäßige Löschung der Frequenzdaten, z.B. nach zwei Tagen.
