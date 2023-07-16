@@ -55,7 +55,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - ~~Linie bei Totband~~
     - ~~Linie bei Einsatz Regelenergie~~
     - ~~50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse~~
-- Bessere Darstellung des Timestamps im Chart
+- ~~Bessere Darstellung des Timestamps im Chart~~
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
     - Service für /update Endpunkt
     - Neue Startseite "Aktuell"
