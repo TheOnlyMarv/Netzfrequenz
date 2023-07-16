@@ -56,9 +56,10 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - ~~Linie bei Einsatz Regelenergie~~
     - ~~50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse~~
 - ~~Bessere Darstellung des Timestamps im Chart~~
+- ~~Routing~~
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
-    - Service für /update Endpunkt
-    - Neue Startseite "Aktuell"
+    - Design Startseite "Aktuell"
+    - Service der /update Endpunkt abfragt
     - Erstellen der Maßnahmekategorien und Beschreibungen
 - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Evtl. blaues Design mit anderem Headerbild
