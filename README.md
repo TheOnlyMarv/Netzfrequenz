@@ -49,7 +49,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 - ~~Button zur Aktualisierung~~
 - ~~Design des Headers, des Navigationsmenüs und des Hintergrunds~~
-- ~~Erstellen eines Line-Charts mit aktuellen Frequenzmesswerten~~
+- ~~Erstellen eines frequency-charts mit aktuellen Frequenzmesswerten~~
 - ~~Sichtbarmachen des 50Hz Richtwertes:~~
     - ~~Linie bei 50Hz~~
     - ~~Linie bei Totband~~
@@ -66,7 +66,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - Einfärben des Charts oder der Chartpunkte entsprechen den getroffenen Maßnahmen mit Legende unter/neben Chart
     - Anzeigen der aktuellen Balancemaßnahmen durch Hoverstates oder Klick
     - Durch Klick auf Messpunkt im Graph Weiterleitung auf zweite Seite `Information`
-- Dynamisches Auffüllen und Animation des Frequenz Linecharts
+- Dynamisches Auffüllen und Animation des Frequenz FrequencyCharts
 - Hinzufügen einer zweiten Seite `Information` mit ausführlicheren Informationen zu den Balancemaßnahmen
 - Längerfristig sollte der regelmäßige Abruf der Daten vom Frontend gesteuert werden, indem der interne Endpoint `https://localhost:5001/api/frequency/update` sekündlich aufgerufen wird. Alternativ ist auch der Einsatz von Websockets denkbar.
 - Veröffentlichung auf Github

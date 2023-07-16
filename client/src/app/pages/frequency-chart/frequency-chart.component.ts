@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { ChartService } from '../charts/chart.service';
+import { ChartService } from '../../charts/chart.service';
 import {formatDate} from '@angular/common';
 
 @Component({
-  selector: 'app-line-chart',
-  templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.css']
+  selector: 'app-frequency-chart',
+  templateUrl: './frequency-chart.component.html',
+  styleUrls: ['./frequency-chart.component.css']
 })
-export class LineChartComponent implements OnInit {
+export class FrequencyChartComponent implements OnInit {
   public chart: any;
   private chartInfo: any;
   private labeldata: any[] = [];
@@ -26,7 +26,7 @@ export class LineChartComponent implements OnInit {
           if (i === 0) {
             this.labeldata.push("jetzt");
           } else {
-            var ts = formatDate(new Date(this.chartInfo[i].timestamp), "hh:mm:ss", "en-US").toString();
+            var ts = formatDate(new Date(this.chartInfo[i].timestamp), "HH:mm:ss", "de-DE").toString();
             this.labeldata.push(ts);
           }
           this.realdata.push(this.chartInfo[i].frequency);

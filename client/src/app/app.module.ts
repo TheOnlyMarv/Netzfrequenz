@@ -4,16 +4,24 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LineChartComponent } from './line-chart/line-chart.component';
+import { FrequencyChartComponent } from './pages/frequency-chart/frequency-chart.component';
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+import localeDeExtra from '@angular/common/locales/extra/de';
+import { FrequencyCurrentComponent } from './pages/frequency-current/frequency-current.component';
+
+registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineChartComponent,
+    FrequencyChartComponent,
     HeaderComponent,
-    NavComponent
+    NavComponent,
+    FrequencyCurrentComponent
   ],
   imports: [
     BrowserModule,
