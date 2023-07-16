@@ -55,9 +55,13 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - ~~Linie bei Totband~~
     - ~~Linie bei Einsatz Regelenergie~~
     - ~~50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse~~
-- Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Bessere Darstellung des Timestamps im Chart
-- Erstellen der Maßnahmekategorien und Beschreibungen
+- Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
+    - Service für /update Endpunkt
+    - Neue Startseite "Aktuell"
+    - Erstellen der Maßnahmekategorien und Beschreibungen
+- Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
+- Evtl. blaues Design mit anderem Headerbild
 - Möglichkeiten der Informationsdarstellung: 
     - Einfärben des Charts oder der Chartpunkte entsprechen den getroffenen Maßnahmen mit Legende unter/neben Chart
     - Anzeigen der aktuellen Balancemaßnahmen durch Hoverstates oder Klick

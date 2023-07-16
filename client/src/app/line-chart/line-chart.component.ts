@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { ChartService } from '../charts/chart.service';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-line-chart',
@@ -22,7 +23,12 @@ export class LineChartComponent implements OnInit {
       console.log(response)
       if (this.chartInfo != null) {
         for (let i = 0; i < this.chartInfo.length; i++) {
-          this.labeldata.push(this.chartInfo[i].timestamp);
+          if (i === 0) {
+            this.labeldata.push("jetzt");
+          } else {
+            var ts = formatDate(new Date(this.chartInfo[i].timestamp), "hh:mm:ss", "en-US").toString();
+            this.labeldata.push(ts);
+          }
           this.realdata.push(this.chartInfo[i].frequency);
         }
         this.createChart(this.labeldata, this.realdata);
