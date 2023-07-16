@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ChartService {
+export class FrequencyChartService {
 
   constructor(private httpClient: HttpClient) {}
 

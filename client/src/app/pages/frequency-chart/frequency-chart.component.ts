@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { ChartService } from '../../charts/chart.service';
+import { FrequencyChartService } from '../../services/frequency-chart/frequency-chart.service';
 import {formatDate} from '@angular/common';
 
 @Component({
@@ -15,7 +15,7 @@ export class FrequencyChartComponent implements OnInit {
   private labeldata: any[] = [];
   private realdata: any[] = [];
 
-  constructor(public service: ChartService) {}
+  constructor(public service: FrequencyChartService) {}
 
   ngOnInit(): void {
     this.service.getFrequencyChartInfo().subscribe((response) => {
