@@ -62,7 +62,7 @@ export class FrequencyChartComponent implements OnInit {
             fill: false,
             pointRadius: 0.1,
             borderColor: "rgba(255,165,0,0.5)",
-            backgroundColor: "white",
+            backgroundColor: "rgb(251, 244, 226)",
             borderDash: [5]
           },
           {
@@ -71,7 +71,7 @@ export class FrequencyChartComponent implements OnInit {
             fill: false,
             pointRadius: 0.1,
             borderColor: "rgba(255,165,0,0.5)",
-            backgroundColor: "white",
+            backgroundColor: "rgb(251, 244, 226)",
             borderDash: [20, 5]
           },
           {
@@ -80,7 +80,7 @@ export class FrequencyChartComponent implements OnInit {
             fill: false,
             pointRadius: 0.1,
             borderColor: "rgba(255,99,71,0.7)",
-            backgroundColor: "white",
+            backgroundColor: "rgb(251, 244, 226)",
             borderDash: [5]
           },
           {
@@ -89,7 +89,7 @@ export class FrequencyChartComponent implements OnInit {
             fill: false,
             pointRadius: 0.1,
             borderColor: "rgba(255,99,71,0.7)",
-            backgroundColor: "white",
+            backgroundColor: "rgb(251, 244, 226)",
             borderDash: [20, 5]
           },
         ]

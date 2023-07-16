@@ -57,16 +57,20 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - ~~50Hz mittig setzen: Chart mit festgelegter Reichweite auf y-Achse~~
 - ~~Bessere Darstellung des Timestamps im Chart~~
 - ~~Routing~~
+- ~~Charts innerhalb der Seitengrenzen~~
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
     - ~~Design neue Startseite "Aktuell"~~
     - ~~Service der /update Endpunkt abfragt~~
     - Erstellen der Maßnahmekategorien und Beschreibungen
     - Bei Klick auf Frequenzwert: Öffnet Textfeld mit Informationen zu aktuellen Frequenz
+- Hintergrundfarbe bis Seitenende
+- Nav-Bar: Helle Farbe bei Hover und Klick
 - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Evtl. blaues Design mit anderem Headerbild
 - Optimierung des Line-Charts: 
     - Ausweitung mit mehr Maßnahmekategorien
     - Verbesserung der Darstellung der Maßnahmen
+        - Klarer machen, in welchem Bereich, welche Maßnahmen getroffen werden
         - z.B. Einfärben des Charts oder der Chartpunkte entsprechen den getroffenen Maßnahmen mit Legende unter/neben Chart
     - Anzeigen der aktuellen Balancemaßnahmen durch Hoverstates oder Klick
     - Durch Klick auf Messpunkt im Graph öffnet sich Textfeld mit Informationen zur jeweiligen Frequenz
