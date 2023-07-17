@@ -1,7 +1,7 @@
-using API.Entities;
+using DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Data
+namespace DataAccess.DB
 {
     public class DataContext : DbContext
     {

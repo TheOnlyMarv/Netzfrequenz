@@ -63,7 +63,9 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - ~~Service der /update Endpunkt abfragt~~
     - Erstellen der Maßnahmekategorien und Beschreibungen
     - Bei Klick auf Frequenzwert: Öffnet Textfeld mit Informationen zu aktuellen Frequenz
-- Hintergrundfarbe bis Seitenende
+- ~~Hintergrundfarbe bis Seitenende~~
+- ~~Benutzen von DTO für Datenabfrage vom Backend~~
+- Bessere Animation bei Reload des Charts
 - Nav-Bar: Helle Farbe bei Hover und Klick
 - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Evtl. blaues Design mit anderem Headerbild
@@ -86,10 +88,13 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 2. Optimierung des Backends
 
 - ~~Refaktorierung von `Progam.cs`: Aktuell findet der sekündliche Abruf der aktuellen Messwerte der Frequenz direkt in `Program.cs` statt. Diese Funktion sollte ausgelagert werden, kurzfristig innerhalb der Web-API.~~
+- ~~Refaktorierung des ProjektAufbaus:~~
+    - ~~Aufspalten in einzelne Projects~~
+    - ~~Verwenden von Services, Repositories, DTOs, Automapper~~
 - Refaktorierung der Backgroundtask: 
     - Sekündliche Speicherung der Daten
     - Die aktuell verwendete Website `https://www.netzfrequenz.info/act/json` stellt nur den aktuellen Messwert der Frequenz, aber nicht den genauen Messzeitpunkt zur Verfügung. Als Zeitpunkt wird stattdessen der Moment des Speicherns in der Datenbank verwendet, was aufgrund von Latency nicht akkurat sein könnte. Stattdessen soll zukünftig sowohl der Messwert, als auch der Messzeitpunkt von `https://www.netzfrequenzmessung.de/verlauf` mithilfe von Webscrapping übernommen werden. 
-    - Nach dieser Änderung soll der /update Endpunkt Zeitpunkt und Messwert bereitstellen (aktuell nur Messwert). 
+    - ~~Nach dieser Änderung soll der /update Endpunkt Zeitpunkt und Messwert bereitstellen (aktuell nur Messwert). ~~
     - Optional: In einem letzten Schritt übernimmt das Frontend den sekündlichen Aufruf des /update Endpunkts, dessen Ergebnisse in einem dynamisch erzeugten Line Chart dargestellt werden.
 - Refaktorierung des /frequency Endpunkts:
     - Erst möglich nach sekündlicher Datenspeicherung

@@ -13,7 +13,7 @@ export class FrequencyCurrentComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getFrequencyCurrentInfo().subscribe((response) => {
-      this.currentFrequency = response;
+      this.currentFrequency = response.Frequency;
       console.log(response);
     })
   }

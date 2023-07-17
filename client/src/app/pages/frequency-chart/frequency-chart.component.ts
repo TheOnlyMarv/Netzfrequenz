@@ -1,45 +1,53 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { FrequencyChartService } from '../../services/frequency-chart/frequency-chart.service';
 import {formatDate} from '@angular/common';
+import { FreqReadingDto } from 'src/app/models/freq-reading-dto';
 
 @Component({
   selector: 'app-frequency-chart',
   templateUrl: './frequency-chart.component.html',
   styleUrls: ['./frequency-chart.component.css']
 })
-export class FrequencyChartComponent implements OnInit {
-  public chart: any;
-  private chartInfo: any;
-  private labeldata: any[] = [];
-  private realdata: any[] = [];
 
+export class FrequencyChartComponent implements OnInit {
+  public chart: any
+  public errorMessage: string|undefined;
   constructor(public service: FrequencyChartService) {}
 
-  ngOnInit(): void {
+  loadChart(): void {
     this.service.getFrequencyChartInfo().subscribe((response) => {
-      this.chartInfo = response;
-      console.log(response)
-      if (this.chartInfo != null) {
-        for (let i = 0; i < this.chartInfo.length; i++) {
-          if (i === 0) {
-            this.labeldata.push("jetzt");
-          } else {
-            var ts = formatDate(new Date(this.chartInfo[i].timestamp), "HH:mm:ss", "de-DE").toString();
-            this.labeldata.push(ts);
-          }
-          this.realdata.push(this.chartInfo[i].frequency);
-        }
-        this.createChart(this.labeldata, this.realdata);
+
+      if(response == undefined) 
+      {
+        this.errorMessage = "Fehler beim Abruf der Daten";
+      } else {
+        this.errorMessage = undefined;
+        const labeldata: any[] = response?.map((x, i) => i == 0 ? 'jetzt' : formatDate(new Date(x.Timestamp), "HH:mm:ss", "de-DE").toString());
+        const realdata: any[] = response?.map(x => x.Frequency);
+        this.createChart(labeldata, realdata);
       }
     });
   }
-  createChart(labeldata: any, realdata: any){
-    this.chart = new Chart("FrequencyChart", {
-      type: 'line', 
 
-      data: {
+  ngOnInit(): void {
+    setInterval(() => this.loadChart(), 5000);
+    this.loadChart();
+  }
+
+  createChart(labeldata: any, realdata: any){
+    if (this.chart == null) {
+      this.chart = new Chart("FrequencyChart", {
+        type: 'line', 
+        data: null as any,
+        options: {
+          aspectRatio:2.5
+        }
+      }
+    )
+    }
+    this.chart.data = {
         labels: labeldata, 
         datasets: [
           {
@@ -93,10 +101,7 @@ export class FrequencyChartComponent implements OnInit {
             borderDash: [20, 5]
           },
         ]
-      },
-      options: {
-        aspectRatio:2.5
-      }
-    });
+    };
+    this.chart.update();
   }
 }

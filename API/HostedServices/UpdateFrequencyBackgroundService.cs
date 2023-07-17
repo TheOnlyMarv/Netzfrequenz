@@ -1,5 +1,7 @@
 ﻿using API.Controllers;
 using API.Data;
+using DataAccess.Repository;
+using Logic.Services.Abstractions;
 
 namespace API.HostedServices
 {
@@ -24,10 +26,10 @@ namespace API.HostedServices
                 {
                     using (var scope = ServiceScopeFactory.CreateScope())
                     {
-                        var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+                        var service = scope.ServiceProvider.GetRequiredService<IFreqReadingService>();
                         try
                         {
-                            await new FrequencyController().UpdateDb(dataContext);
+                            await service.Update();
                         }
                         catch (Exception ex)
                         {

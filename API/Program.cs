@@ -1,18 +1,17 @@
 using API.Data;
+using System.Text.Json;
 using API.HostedServices;
 using Microsoft.EntityFrameworkCore;
+using Logic;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddHostedService<UpdateFrequencyBackgroundService>();
-builder.Services.AddControllers();
-builder.Services.AddDbContext<DataContext>(opt => 
-{
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder.Services.AddControllers().AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
 builder.Services.AddCors();
+builder.Services.AddApplicationServices(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,6 +1,6 @@
-namespace API.Entities
+namespace Contract.DTOs
 {
-    public class FreqReading
+    public class FreqReadingDto
     {
         public int Id { get; set; }
         public DateTime Timestamp { get; set; }

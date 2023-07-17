@@ -1,5 +1,6 @@
 <div class="chart-container" style="position: relative; height:65vh; width:100vw; padding: 30px; padding-bottom: 110px;">
     <h2>Verlauf der Netzfrequenz im europäischen Verbundnetz</h2>
     <h4>(Messwert alle 5 Sekunden)</h4>
+    <h5 style="color: red;" *ngIf="errorMessage != null">{{errorMessage}}</h5>
     <canvas id="FrequencyChart" style="padding-top: 20px">{{ chart }}</canvas>
 </div>
