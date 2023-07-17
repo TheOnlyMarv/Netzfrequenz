@@ -57,7 +57,7 @@ export class FrequencyChartComponent implements OnInit {
             backgroundColor: "rgba(50,205,50,0.8)",
           },
           {
-            label: "Toleranzbereich 'hoch'",
+            label: "Start Regelleistung (negativ)",
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50.02),
             fill: false,
             pointRadius: 0.1,
@@ -66,7 +66,7 @@ export class FrequencyChartComponent implements OnInit {
             borderDash: [5]
           },
           {
-            label: "Toleranzbereich 'niedrig'",
+            label: "Start Regelleistung (positiv)",
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.98),
             fill: false,
             pointRadius: 0.1,
@@ -75,7 +75,7 @@ export class FrequencyChartComponent implements OnInit {
             borderDash: [20, 5]
           },
           {
-            label: "Einsatz negativer Regelenergie",
+            label: "Reduzierung der Einspeisung",
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50.2),
             fill: false,
             pointRadius: 0.1,
@@ -84,7 +84,7 @@ export class FrequencyChartComponent implements OnInit {
             borderDash: [5]
           },
           {
-            label: "Einsatz positiver Regelenergie",
+            label: "Einspeisung von Leistungsreserven",
             data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.8),
             fill: false,
             pointRadius: 0.1,
