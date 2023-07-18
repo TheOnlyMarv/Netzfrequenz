@@ -12,8 +12,8 @@ namespace Logic
             IConfiguration config)
         {
             services.AddScoped<IFreqReadingService, FreqReadingService>();
-            DataAccess.ServiceCollectionExtension.AddApplicationServices(services, config);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            DataAccess.ServiceCollectionExtension.AddApplicationServices(services, config);
             return services;
         }
     }
