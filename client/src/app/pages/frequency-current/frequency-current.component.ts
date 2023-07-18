@@ -8,14 +8,18 @@ import { FrequencyCurrentService } from 'src/app/services/frequency-current/freq
 })
 export class FrequencyCurrentComponent implements OnInit {
   public currentFrequency: any;
-
+  public errorMessage: string|undefined;
   constructor(public service: FrequencyCurrentService) {}
 
   ngOnInit(): void {
     this.service.getFrequencyCurrentInfo().subscribe((response) => {
-      this.currentFrequency = response.Frequency;
-      console.log(response);
+      if (response == undefined)
+      {
+        this.errorMessage = "Fehler beim Abruf der Daten";
+      } else {
+        this.errorMessage = undefined;
+        this.currentFrequency = response.Frequency;
+      }
     })
   }
-
 }

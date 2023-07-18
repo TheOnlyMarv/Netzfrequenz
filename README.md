@@ -68,6 +68,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - ~~Bessere Animation bei Reload des Charts~~
 - ~~'jetzt' ist am rechten Chartende~~
 - ~~Bei Chart: nur Nachladen von Frequency, Rest der Linien bleibt statisch~~
+- ~~Nachricht, wenn aktueller Messwert fehlt~~
 - Nav-Bar: Helle Farbe bei Hover und Klick
 - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Evtl. blaues Design mit anderem Headerbild
