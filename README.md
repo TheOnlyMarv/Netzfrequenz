@@ -69,16 +69,16 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - ~~'jetzt' ist am rechten Chartende~~
 - ~~Bei Chart: nur Nachladen von Frequency, Rest der Linien bleibt statisch~~
 - ~~Nachricht, wenn aktueller Messwert fehlt~~
+- ~~Move style to css files~~
 - Nav-Bar: Helle Farbe bei Hover und Klick
 - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Evtl. blaues Design mit anderem Headerbild
 - Optimierung des Line-Charts: 
-    - Ausweitung mit mehr Maßnahmekategorien
-    - Verbesserung der Darstellung der Maßnahmen
-        - Klarer machen, in welchem Bereich, welche Maßnahmen getroffen werden
-        - z.B. Einfärben des Charts oder der Chartpunkte entsprechen den getroffenen Maßnahmen mit Legende unter/neben Chart
-    - Anzeigen der aktuellen Balancemaßnahmen durch Hoverstates oder Klick
-    - Durch Klick auf Messpunkt im Graph öffnet sich Textfeld mit Informationen zur jeweiligen Frequenz
+    - Ausweitung mit mehr Maßnahmekategorien?
+    - ~~Verbesserung der Darstellung der Maßnahmen~~
+        - ~~Klarer machen, in welchem Bereich, welche Maßnahmen getroffen werden~~
+        - ~~z.B. Einfärben des Charts oder der Chartpunkte entsprechen den getroffenen Maßnahmen mit Legende unter/neben Chart~~
+    - ~~Anzeigen der aktuellen Balancemaßnahmen durch Hoverstates oder Klick~~
     - Option, historische Daten abzurufen (z.B. vor einer Minute, vor fünf Minuten)
     - Option, die Frequenz der Datenpunkte zu erhöhen oder vermindern (z.B. jede Sekunde, jede 30 Sekunden, jede Minute)
 - Erstellung eines neuen, dynamischen Charts: 

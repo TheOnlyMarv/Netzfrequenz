@@ -1,0 +1,15 @@
+.chart-container {
+    position: relative; 
+    height:65vh; 
+    width:100vw; 
+    padding: 30px; 
+    padding-bottom: 110px;
+}
+
+.chart-container h5 {
+    color: red;
+}
+
+.chart-container canvas {
+    padding-top: 20px;
+}
