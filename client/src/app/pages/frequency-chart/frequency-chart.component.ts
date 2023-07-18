@@ -4,6 +4,7 @@ import Chart from 'chart.js/auto';
 import { FrequencyChartService } from '../../services/frequency-chart/frequency-chart.service';
 import {formatDate} from '@angular/common';
 import { FreqReadingDto } from 'src/app/models/freq-reading-dto';
+import { ActivationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-frequency-chart',
@@ -26,7 +27,7 @@ export class FrequencyChartComponent implements OnInit {
         this.errorMessage = undefined;
         const labeldata: any[] = response?.map((x, i) => i == 0 ? 'jetzt' : formatDate(new Date(x.Timestamp), "HH:mm:ss", "de-DE").toString());
         const realdata: any[] = response?.map(x => x.Frequency);
-        this.createChart(labeldata, realdata);
+        this.createChart(labeldata.reverse(), realdata.reverse());
       }
     });
   }
@@ -42,8 +43,14 @@ export class FrequencyChartComponent implements OnInit {
         type: 'line', 
         data: null as any,
         options: {
-          aspectRatio:2.5
-        }
+          animation: {
+            duration: 0,
+          },
+          interaction: {
+            intersect: false
+          },
+          aspectRatio:2.5,
+        },
       }
     )
     }
@@ -105,3 +112,35 @@ export class FrequencyChartComponent implements OnInit {
     this.chart.update();
   }
 }
+
+// const totalDuration = 10000;
+// const delayBetweenPoints = totalDuration / data.length;
+// const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+// const animation = {
+//   x: {
+//     type: 'number',
+//     easing: 'linear',
+//     duration: delayBetweenPoints,
+//     from: NaN, // the point is initially skipped
+//     delay(ctx) {
+//       if (ctx.type !== 'data' || ctx.xStarted) {
+//         return 0;
+//       }
+//       ctx.xStarted = true;
+//       return ctx.index * delayBetweenPoints;
+//     }
+//   },
+//   y: {
+//     type: 'number',
+//     easing: 'linear',
+//     duration: delayBetweenPoints,
+//     from: previousY,
+//     delay(ctx) {
+//       if (ctx.type !== 'data' || ctx.yStarted) {
+//         return 0;
+//       }
+//       ctx.yStarted = true;
+//       return ctx.index * delayBetweenPoints;
+//     }
+//   }
+// };

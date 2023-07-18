@@ -65,8 +65,9 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - Bei Klick auf Frequenzwert: Öffnet Textfeld mit Informationen zu aktuellen Frequenz
 - ~~Hintergrundfarbe bis Seitenende~~
 - ~~Benutzen von DTO für Datenabfrage vom Backend~~
-- Bessere Animation bei Reload des Charts
-- Bei Chart: nur Nachladen von Frequency, Rest der Linien bleibt statisch
+- ~~Bessere Animation bei Reload des Charts~~
+- ~~'jetzt' ist am rechten Chartende~~
+- ~~Bei Chart: nur Nachladen von Frequency, Rest der Linien bleibt statisch~~
 - Nav-Bar: Helle Farbe bei Hover und Klick
 - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Evtl. blaues Design mit anderem Headerbild
