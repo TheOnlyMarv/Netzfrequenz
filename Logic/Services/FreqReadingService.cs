@@ -1,6 +1,7 @@
 using System.IO.Compression;
 using System.Net.Cache;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using AutoMapper;
 using Contract.DTOs;
 using DataAccess.Entities;
@@ -66,12 +67,12 @@ namespace Logic.Services
 
         public async Task<FreqReading> ParseResponse(HttpResponseMessage response)
         {
-            string respString = await response.Content.ReadAsStringAsync();
-            string[] separators = {"<f2>", "</f2>", "<z> ", "</z>"};
-            string[] results = respString.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
-            var frequency = float.Parse(results[0]);
-            DateTime timestamp = DateTime.Parse(results[1]);
-            FreqReading newReading = new FreqReading{ Timestamp = timestamp, Frequency = frequency};
+            var respString = await response.Content.ReadAsStringAsync();
+            var rgFrequency = new Regex(@"(?<=<f2>)(.*?)(?=<)");
+            var rgTimestamp = new Regex(@"(?<=<z> )(.*?)(?=<)");
+            var frequency = float.Parse(rgFrequency.Matches(respString)[0].Value);
+            var timestamp = DateTime.Parse(rgTimestamp.Matches(respString)[0].Value);
+            var newReading = new FreqReading{ Timestamp = timestamp, Frequency = frequency};
             return newReading;
         }
     }
