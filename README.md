@@ -102,7 +102,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - Optional: In einem letzten Schritt übernimmt das Frontend den sekündlichen Aufruf des /update Endpunkts, dessen Ergebnisse in einem dynamisch erzeugten Line Chart dargestellt werden.
 - Refaktorierung des /frequency Endpunkts:
     - Erst möglich nach sekündlicher Datenspeicherung
-    - Neuer Parameter 'granularity': Je nach Auswahl im Frontend werden Daten pro Sekunde, pro 5 Sekunden, pro 10 Sekunden, pro Minute etc abgerufen
+    - Neuer Parameter 'interval': Je nach Auswahl im Frontend werden Daten pro Sekunde, pro 5 Sekunden, pro 10 Sekunden, pro Minute etc abgerufen
     - Umgang mit fehlenden Daten
 - Refaktorierung Möglichkeit Granularität der Daten zu verändern
 - Refaktorierung des `Controllers` Ordners: Um den HttpController, der die Endpoints der Web-App beinhaltet, möglichst lesbar zu halten, wurden die Http Anfragen und Datenbankzugriffe in den `FrequencyController` ausgelagert. Hier gibt es vermutlich eine bessere und in C# übliche Weise der Strukturierung.
