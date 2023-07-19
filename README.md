@@ -50,6 +50,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - Refaktorierung Line Chart:
     - Neue Buttons um Auszuwählen wie lange man Frequenz anzeigen will: letzte 30 Sekunden, letzte Minute, letzte 5 Minuten, etc
     - Option, historische Daten abzurufen (z.B. vor einer Minute, vor fünf Minuten)
+    - ~~Anzeigen der Daten auf x-Achse nur alle fünf Sekunden~~
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
     - Pop-up window soll auf Mitte der Seite erscheinen
     - ~~Erstellen der Maßnahmekategorien und Beschreibungen~~

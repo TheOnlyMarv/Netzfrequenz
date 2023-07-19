@@ -52,6 +52,14 @@ export class FrequencyChartComponent implements OnInit {
             intersect: false
           },
           aspectRatio:2.5,
+          scales: {
+            x: {
+              ticks: {
+                autoSkipPadding: 35,
+                maxRotation: 0,
+              }
+            }
+          }
         },
       }
     )
@@ -61,14 +69,17 @@ export class FrequencyChartComponent implements OnInit {
       {
         label: "Netzfrequenz",
         data: realdata,
-        backgroundColor: "rgba(0,0,0.7)",
-        borderColor: "rgba(0,0,0,0.6)"
+        pointRadius: 2,
+        borderWidth: 3,
+        borderColor: "rgba(0,0,0,0.6)",
+        backgroundColor: "rgba(0,0,0.8)"
       },
       {
         label: "Richtwert",
         data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50),
         fill: false,
         pointRadius: 0.1,
+        borderWidth: 2,
         borderColor: "rgba(50,205,50,0.8)",
         backgroundColor: "rgba(50,205,50,0.8)",
       },
@@ -77,6 +88,7 @@ export class FrequencyChartComponent implements OnInit {
         data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50.02),
         fill: false,
         pointRadius: 0.1,
+        borderWidth: 2,
         borderColor: "rgba(255,165,0,0.5)",
         backgroundColor: "rgb(251, 244, 226)",
         borderDash: [5]
@@ -86,6 +98,7 @@ export class FrequencyChartComponent implements OnInit {
         data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.98),
         fill: false,
         pointRadius: 0.1,
+        borderWidth: 2,
         borderColor: "rgba(255,165,0,0.5)",
         backgroundColor: "rgb(251, 244, 226)",
         borderDash: [20, 5]
@@ -95,6 +108,7 @@ export class FrequencyChartComponent implements OnInit {
         data: Array.apply(null, realdata).map(Number.prototype.valueOf, 50.2),
         fill: false,
         pointRadius: 0.1,
+        borderWidth: 2,
         borderColor: "rgba(255,99,71,0.7)",
         backgroundColor: "rgb(251, 244, 226)",
         borderDash: [5]
@@ -104,6 +118,7 @@ export class FrequencyChartComponent implements OnInit {
         data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.8),
         fill: false,
         pointRadius: 0.1,
+        borderWidth: 2,
         borderColor: "rgba(255,99,71,0.7)",
         backgroundColor: "rgb(251, 244, 226)",
         borderDash: [20, 5]
@@ -117,6 +132,7 @@ export class FrequencyChartComponent implements OnInit {
           data: Array.apply(null, realdata).map(Number.prototype.valueOf, 51.5),
           fill: false,
           pointRadius: 0.1,
+          borderWidth: 2,
           borderColor: "rgba(255, 0, 0, 0.9)",
           backgroundColor: "rgb(251, 244, 226)",
           borderDash: [5],
@@ -127,6 +143,7 @@ export class FrequencyChartComponent implements OnInit {
           data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.0),
           fill: false,
           pointRadius: 0.1,
+          borderWidth: 2,
           borderColor: "rgba(255, 0, 0, 0.9)",
           backgroundColor: "rgb(251, 244, 226)",
           borderDash: [20, 5],
