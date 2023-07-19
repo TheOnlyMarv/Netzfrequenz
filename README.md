@@ -59,10 +59,11 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - ~~Routing~~
 - ~~Charts innerhalb der Seitengrenzen~~
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
+    - Erstellen der Maßnahmekategorien und Beschreibungen
+    - Pop-up window soll auf Mitte der Seite erscheinen
     - ~~Design neue Startseite "Aktuell"~~
     - ~~Service der /update Endpunkt abfragt~~
-    - Erstellen der Maßnahmekategorien und Beschreibungen
-    - Bei Klick auf Frequenzwert: Öffnet Textfeld mit Informationen zu aktuellen Frequenz
+    - ~~Bei Klick auf Frequenzwert: Öffnet pop-up Textfeld mit Informationen zu aktuellen Frequenz~~
 - ~~Hintergrundfarbe bis Seitenende~~
 - ~~Benutzen von DTO für Datenabfrage vom Backend~~
 - ~~Bessere Animation bei Reload des Charts~~
