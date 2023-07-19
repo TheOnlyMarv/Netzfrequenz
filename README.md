@@ -47,6 +47,24 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 1. Design und Ausbau des Angular Frontends
 
+- Refaktorierung Line Chart:
+    - Neue Buttons um Auszuwählen wie lange man Frequenz anzeigen will: letzte 30 Sekunden, letzte Minute, letzte 5 Minuten, etc
+    - Option, historische Daten abzurufen (z.B. vor einer Minute, vor fünf Minuten)
+- Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
+    - Pop-up window soll auf Mitte der Seite erscheinen
+    - ~~Erstellen der Maßnahmekategorien und Beschreibungen~~
+    - ~~Design neue Startseite "Aktuell"~~
+    - ~~Service der /update Endpunkt abfragt~~
+    - ~~Bei Klick auf Frequenzwert: Öffnet pop-up Textfeld mit Informationen zu aktuellen Frequenz~~
+- Nav-Bar: Helle Farbe bei Hover und Klick
+- Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
+- Evtl. blaues Design mit anderem Headerbild
+- Optional: 
+    - Hinzufügen einer dritten Seite `Informationen` mit ausführlicheren Informationen zu den Balancemaßnahmen
+    - Längerfristig könnte die regelmäßige Speicherung der Daten vom Frontend aus gesteuert werden, indem der interne Endpoint `https://localhost:5001/api/frequency/update` sekündlich aufgerufen wird. Alternativ ist auch der Einsatz von Websockets denkbar. 
+    - Veröffentlichung auf Github
+    - Erstellung eines neuen, dynamischen Charts: 
+        - Dynamisches Auffüllen und Animation: von links nach rechts laufende Linie 
 - ~~Button zur Aktualisierung~~
 - ~~Design des Headers, des Navigationsmenüs und des Hintergrunds~~
 - ~~Erstellen eines frequency-charts mit aktuellen Frequenzmesswerten~~
@@ -58,12 +76,6 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - ~~Bessere Darstellung des Timestamps im Chart~~
 - ~~Routing~~
 - ~~Charts innerhalb der Seitengrenzen~~
-- Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
-    - Pop-up window soll auf Mitte der Seite erscheinen
-    - ~~Erstellen der Maßnahmekategorien und Beschreibungen~~
-    - ~~Design neue Startseite "Aktuell"~~
-    - ~~Service der /update Endpunkt abfragt~~
-    - ~~Bei Klick auf Frequenzwert: Öffnet pop-up Textfeld mit Informationen zu aktuellen Frequenz~~
 - ~~Hintergrundfarbe bis Seitenende~~
 - ~~Benutzen von DTO für Datenabfrage vom Backend~~
 - ~~Bessere Animation bei Reload des Charts~~
@@ -71,39 +83,25 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - ~~Bei Chart: nur Nachladen von Frequency, Rest der Linien bleibt statisch~~
 - ~~Nachricht, wenn aktueller Messwert fehlt~~
 - ~~styles in die CSS files verschieben~~
-- Nav-Bar: Helle Farbe bei Hover und Klick
-- Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
-- Evtl. blaues Design mit anderem Headerbild
-- Optimierung des Line-Charts: 
+- ~~Optimierung des Line-Charts: ~~
     - ~~Ausweitung mit mehr Maßnahmekategorien: Optional werden bei extremer Unter oder Überfrequenz zusätzliche Linien angezeigt~~
     - ~~Verbesserung der Darstellung der Maßnahmen~~
         - ~~Klarer machen, in welchem Bereich, welche Maßnahmen getroffen werden~~
         - ~~z.B. Einfärben des Charts oder der Chartpunkte entsprechen den getroffenen Maßnahmen mit Legende unter/neben Chart~~
     - ~~Anzeigen der aktuellen Balancemaßnahmen durch Hoverstates oder Klick~~
-    - Option, historische Daten abzurufen (z.B. vor einer Minute, vor fünf Minuten)
-    - Option, die Frequenz der Datenpunkte zu erhöhen oder vermindern (z.B. jede Sekunde, jede 30 Sekunden, jede Minute)
-- Erstellung eines neuen, dynamischen Charts: 
-    - Dynamisches Auffüllen und Animation: von links nach rechts laufende Linie 
-- Optional: 
-    - Hinzufügen einer dritten Seite `Informationen` mit ausführlicheren Informationen zu den Balancemaßnahmen
-    - Längerfristig könnte die regelmäßige Speicherung der Daten vom Frontend aus gesteuert werden, indem der interne Endpoint `https://localhost:5001/api/frequency/update` sekündlich aufgerufen wird. Alternativ ist auch der Einsatz von Websockets denkbar. 
-    - Veröffentlichung auf Github
+
 
 2. Optimierung des Backends
 
+- Wechsel der Datenbank zu PostgreSQL und regelmäßige Löschung der Frequenzdaten, z.B. nach zwei Tagen.
 - ~~Refaktorierung von `Progam.cs`: Aktuell findet der sekündliche Abruf der aktuellen Messwerte der Frequenz direkt in `Program.cs` statt. Diese Funktion sollte ausgelagert werden, kurzfristig innerhalb der Web-API.~~
 - ~~Refaktorierung des ProjektAufbaus:~~
     - ~~Aufspalten in einzelne Projects~~
     - ~~Verwenden von Services, Repositories, DTOs, Automapper~~
-- Refaktorierung der Backgroundtask: 
-    - Sekündliche Speicherung der Daten
+- ~~Refaktorierung der Backgroundtask~~: 
+    - ~~Sekündliche Speicherung der Daten~~
     - ~~Die aktuell verwendete Website `https://www.netzfrequenz.info/act/json` stellt nur den aktuellen Messwert der Frequenz, aber nicht den genauen Messzeitpunkt zur Verfügung. Als Zeitpunkt wird stattdessen der Moment des Speicherns in der Datenbank verwendet, was aufgrund von Latency nicht akkurat sein könnte. Stattdessen soll zukünftig sowohl der Messwert, als auch der Messzeitpunkt von `https://www.netzfrequenzmessung.de/verlauf` mithilfe von Webscrapping übernommen werden. ~~
     - ~~Nach dieser Änderung soll der /update Endpunkt Zeitpunkt und Messwert bereitstellen (aktuell nur Messwert). ~~
-    - Optional: In einem letzten Schritt übernimmt das Frontend den sekündlichen Aufruf des /update Endpunkts, dessen Ergebnisse in einem dynamisch erzeugten Line Chart dargestellt werden.
-- Refaktorierung des /frequency Endpunkts:
-    - Erst möglich nach sekündlicher Datenspeicherung
-    - Neuer Parameter 'interval': Je nach Auswahl im Frontend werden Daten pro Sekunde, pro 5 Sekunden, pro 10 Sekunden, pro Minute etc abgerufen
-    - Umgang mit fehlenden Daten
-- Refaktorierung Möglichkeit Granularität der Daten zu verändern
-- Refaktorierung des `Controllers` Ordners: Um den HttpController, der die Endpoints der Web-App beinhaltet, möglichst lesbar zu halten, wurden die Http Anfragen und Datenbankzugriffe in den `FrequencyController` ausgelagert. Hier gibt es vermutlich eine bessere und in C# übliche Weise der Strukturierung.
-- Wechsel der Datenbank zu PostgreSQL und regelmäßige Löschung der Frequenzdaten, z.B. nach zwei Tagen.
+- ~~Refaktorierung des /frequency Endpunkts:~~
+    - ~~Erst möglich nach sekündlicher Datenspeicherung~~
+    - ~~Neuer Parameter limit: Frontend kann per "limit" Parameter in Request festlegen, wie viele Ergebnisse returned werden sollen~~

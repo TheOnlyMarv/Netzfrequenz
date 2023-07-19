@@ -18,7 +18,7 @@ export class FrequencyChartComponent implements OnInit {
   constructor(public service: FrequencyChartService) {}
 
   loadChart(): void {
-    this.service.getFrequencyChartInfo().subscribe((response) => {
+    this.service.getFrequencyChartInfo(10).subscribe((response) => {
 
       if(response == undefined) 
       {
@@ -39,7 +39,7 @@ export class FrequencyChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setInterval(() => this.loadChart(), 5000);
+    setInterval(() => this.loadChart(), 1000);
     this.loadChart();
   }
 

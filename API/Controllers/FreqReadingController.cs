@@ -21,9 +21,8 @@ namespace API.Controllers
         /// This request gets limited list of frequency readings from the database.
         /// </summary>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FreqReadingDto>>> GetReadings()
+        public async Task<ActionResult<IEnumerable<FreqReadingDto>>> GetReadings(int limit)
         {
-            var limit = 10;
             return Ok(await _service.GetReadings(limit));
         }
 

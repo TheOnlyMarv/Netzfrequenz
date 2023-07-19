@@ -11,6 +11,6 @@ export class FrequencyCurrentService {
   constructor(private httpClient: HttpClient) {}
 
   getFrequencyCurrentInfo() : Observable<FreqReadingDto> {
-    return this.httpClient.get<FreqReadingDto>("https://localhost:5001/api/frequency/update");
+    return this.httpClient.get<FreqReadingDto>("https://localhost:5001/api/frequency/latest");
   }
 }

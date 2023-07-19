@@ -21,7 +21,7 @@ namespace API.HostedServices
         {
             try
             {
-                var periodicTimer = new PeriodicTimer(TimeSpan.FromSeconds(5));
+                var periodicTimer = new PeriodicTimer(TimeSpan.FromSeconds(1));
                 while (await periodicTimer.WaitForNextTickAsync(stoppingToken))
                 {
                     using (var scope = ServiceScopeFactory.CreateScope())

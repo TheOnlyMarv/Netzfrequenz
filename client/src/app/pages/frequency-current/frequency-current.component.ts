@@ -51,7 +51,7 @@ export class FrequencyCurrentComponent implements OnInit {
       case FrequencyType.negativeBalancing: {
         direction = "über";
         amount = "zu viel";
-        explanation = "Um die <b>Überfrequenz</b> auszugleichen, wird nun automatisch die sogenannte <b>negative Regelleistung</b> aktiviert: Ausgewählte Stromerzeuger entziehen dem Netz Strom, indem sie den eigenen Verbrauch erhöhen, oder die eigene Einspeisung reduzieren.";
+        explanation = "Um die <b>Überfrequenz</b> auszugleichen, wird automatisch die sogenannte <b>negative Regelleistung</b> aktiviert: Ausgewählte Stromerzeuger entziehen dem Netz Strom, indem sie ihren Verbrauch erhöhen, oder die eigene Einspeisung reduzieren.";
         break;
       }
       case FrequencyType.reduceSupply: {
@@ -75,7 +75,7 @@ export class FrequencyCurrentComponent implements OnInit {
       case FrequencyType.positivBalancing: {
         direction = "unter";
         amount = "zu wenig";
-        explanation = "Um die <b>Unterfrequenz</b> auszugleichen, wird nun automatisch die sogenannte <b>positive Regelleistung</b> aktiviert: Ausgewählte Stromerzeuger speisen mehr Strom ins Netz ein oder reduzieren ihren Verbrauch.";
+        explanation = "Um die <b>Unterfrequenz</b> auszugleichen, wird automatisch die sogenannte <b>positive Regelleistung</b> aktiviert: Ausgewählte Stromerzeuger speisen mehr Strom ins Netz ein oder reduzieren ihren Verbrauch.";
         break;
       }
       case FrequencyType.increaseSupply: {

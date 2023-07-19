@@ -10,7 +10,7 @@ export class FrequencyChartService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getFrequencyChartInfo() : Observable<FreqReadingDto[]> {
-    return this.httpClient.get<FreqReadingDto[]>("https://localhost:5001/api/frequency");
+  getFrequencyChartInfo(limit: number) : Observable<FreqReadingDto[]> {
+    return this.httpClient.get<FreqReadingDto[]>(`https://localhost:5001/api/frequency?limit=${limit}`);
   }
 }
