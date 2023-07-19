@@ -13,3 +13,9 @@
 .chart-container canvas {
     padding-top: 20px;
 }
+
+.chart-container button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}

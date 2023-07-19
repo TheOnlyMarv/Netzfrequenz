@@ -47,25 +47,25 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 1. Design und Ausbau des Angular Frontends
 
-- Refaktorierung Line Chart:
-    - Neue Buttons um Auszuwählen wie lange man Frequenz anzeigen will: letzte 30 Sekunden, letzte Minute, letzte 5 Minuten, etc
-    - Option, historische Daten abzurufen (z.B. vor einer Minute, vor fünf Minuten)
-    - ~~Anzeigen der Daten auf x-Achse nur alle fünf Sekunden~~
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
     - Pop-up window soll auf Mitte der Seite erscheinen
     - ~~Erstellen der Maßnahmekategorien und Beschreibungen~~
     - ~~Design neue Startseite "Aktuell"~~
     - ~~Service der /update Endpunkt abfragt~~
     - ~~Bei Klick auf Frequenzwert: Öffnet pop-up Textfeld mit Informationen zu aktuellen Frequenz~~
+- Erster Wert im Line-Chart 'jetzt' soll wieder angezeigt werden
 - Nav-Bar: Helle Farbe bei Hover und Klick
 - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Evtl. blaues Design mit anderem Headerbild
 - Optional: 
+    - Option, historische Daten abzurufen (z.B. vor einer Minute, vor fünf Minuten)
     - Hinzufügen einer dritten Seite `Informationen` mit ausführlicheren Informationen zu den Balancemaßnahmen
     - Längerfristig könnte die regelmäßige Speicherung der Daten vom Frontend aus gesteuert werden, indem der interne Endpoint `https://localhost:5001/api/frequency/update` sekündlich aufgerufen wird. Alternativ ist auch der Einsatz von Websockets denkbar. 
     - Veröffentlichung auf Github
     - Erstellung eines neuen, dynamischen Charts: 
         - Dynamisches Auffüllen und Animation: von links nach rechts laufende Linie 
+- ~~Intervalauswahl im Line Chart: Neue Buttons um Auszuwählen wie lange man Frequenz anzeigen will: letzte 30 Sekunden, letzte Minute, letzte 5 Minuten, etc~~
+- ~~Anzeigen der Daten auf x-Achse nur alle fünf Sekunden im Line-Chart~~
 - ~~Button zur Aktualisierung~~
 - ~~Design des Headers, des Navigationsmenüs und des Hintergrunds~~
 - ~~Erstellen eines frequency-charts mit aktuellen Frequenzmesswerten~~

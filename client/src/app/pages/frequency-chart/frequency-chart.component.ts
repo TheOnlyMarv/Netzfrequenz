@@ -14,11 +14,17 @@ import { ActivationEnd } from '@angular/router';
 
 export class FrequencyChartComponent implements OnInit {
   public chart: any
-  public errorMessage: string|undefined;
+  public errorMessage: string|undefined
+  public limit: number = 60
   constructor(public service: FrequencyChartService) {}
 
+  updateLimit(limit: number) {
+    this.limit = limit;
+    this.loadChart();
+  }
+
   loadChart(): void {
-    this.service.getFrequencyChartInfo(60).subscribe((response) => {
+    this.service.getFrequencyChartInfo(this.limit).subscribe((response) => {
 
       if(response == undefined) 
       {
