@@ -57,7 +57,13 @@ export class FrequencyCurrentComponent implements OnInit {
       case FrequencyType.reduceSupply: {
         direction = "über";
         amount = "zu viel";
-        explanation = "Die Überfrequenz ist aktuell so hoch, dass sie nicht mehr allein über die sogenannte Regelleistung ausbalanciert werden kann. Es werden nun zusätzlich Stromerzeuger wie Solaranlagen aufgerufen, weniger Strom als geplant in Netz einzuspeisen.";
+        explanation = "Die Überfrequenz ist aktuell so hoch, dass sie nicht mehr allein über die sogenannte Regelleistung ausbalanciert werden kann. Bestimmte Erzeugertypen, insbesondere Solaranlagen, müssen ihre geplante Stromerzeugung stark reduzieren.";
+        break;
+      }
+      case FrequencyType.disconnectSuppliers: {
+        direction = "über";
+        amount = "zu viel";
+        explanation = "Die Überfrequenz ist aktuell so hoch, dass sie nicht mehr allein über die sogenannte Regelleistung imd Reduzierung der Einspeisung ausbalanciert werden kann. Bestimmte Erzeugertypen, insbesondere Solaranlagen, werden nun komplett vom Netz genommen.";
         break;
       }
       case FrequencyType.deadbandPositive: {
@@ -78,6 +84,12 @@ export class FrequencyCurrentComponent implements OnInit {
         explanation = "Die Frequenz ist aktuell sehr niedrig (<b>Unterfrequenz</b>), sodass sie nicht mehr allein über die sogenannte Regelleistung ausbalanciert werden kann. Es werden nun zusätzlich Leistungsreserven von Kraftwerken aktiviert.";
         break;
       }
+      case FrequencyType.reduceDemand: {
+        direction = "unter";
+        amount = "zu wenig";
+        explanation = "Die Frequenz ist aktuell sehr niedrig (<b>Unterfrequenz</b>), sodass sie nicht mehr allein über die sogenannte Regelleistung und andere Leistungsreserven ausbalanciert werden kann. Die Folge sind ungeplante Stromausfälle.";
+        break;
+      }
       default: {
         return "Fehler beim Abruf der Daten."
       }
@@ -90,19 +102,23 @@ export class FrequencyCurrentComponent implements OnInit {
   determineFrequencyType(value: number): FrequencyType|any {
     if (value == 50) {
       return FrequencyType.balanced
+    } else if (value > 50 && value <= 50.02) {
+      return FrequencyType.deadbandNegative
+    } else if (value > 50.02 && value <= 50.2) {
+      return FrequencyType.negativeBalancing
+    } else if (value > 50.2 && value <= 51.5 ) {
+      return FrequencyType.reduceSupply
+    } else if (value > 51.5 ) {
+      return FrequencyType.disconnectSuppliers
     } else if (value < 50 && value >= 49.08) {
       return FrequencyType.deadbandPositive
     } else if (value < 49.08 && value >= 49.8) {
       return FrequencyType.positivBalancing
-    } else if (value < 49.8) {
+    } else if (value < 49.8 && value >= 49) {
       return FrequencyType.increaseSupply
-    } else if (value > 50 && value < 50.02) {
-      return FrequencyType.deadbandNegative
-    } else if (value > 50.02 && value < 50.2) {
-      return FrequencyType.negativeBalancing
-    } else if (value > 50.2) {
-      return FrequencyType.reduceSupply
-    }
+    } else if (value < 49) {
+      return FrequencyType.reduceDemand
+    } 
     throwIfEmpty()
   }
 }

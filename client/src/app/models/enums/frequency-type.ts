@@ -1,9 +1,11 @@
 export enum FrequencyType {
-   positivBalancing,
-   negativeBalancing,
    balanced,
-   reduceSupply,
-   increaseSupply,
-   deadbandPositive,
    deadbandNegative,
+   negativeBalancing,
+   reduceSupply,
+   disconnectSuppliers,
+   deadbandPositive,
+   positivBalancing,
+   increaseSupply,
+   reduceDemand,
   }

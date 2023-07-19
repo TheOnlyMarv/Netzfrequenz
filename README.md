@@ -75,7 +75,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
 - Evtl. blaues Design mit anderem Headerbild
 - Optimierung des Line-Charts: 
-    - Ausweitung mit mehr Maßnahmekategorien?
+    - ~~Ausweitung mit mehr Maßnahmekategorien: Optional werden bei extremer Unter oder Überfrequenz zusätzliche Linien angezeigt~~
     - ~~Verbesserung der Darstellung der Maßnahmen~~
         - ~~Klarer machen, in welchem Bereich, welche Maßnahmen getroffen werden~~
         - ~~z.B. Einfärben des Charts oder der Chartpunkte entsprechen den getroffenen Maßnahmen mit Legende unter/neben Chart~~
