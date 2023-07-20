@@ -28,12 +28,12 @@ export class FrequencyCurrentComponent implements OnInit {
   }
 
   get getFrequencyInformation(): string {
-    var direction: string
-    var amount: string
-    var explanation: string
-    var text: string
+    let direction: string
+    let amount: string
+    let explanation: string
+    let text: string
 
-    var frequencyType = this.determineFrequencyType(this.currentFrequency)
+    let frequencyType = this.determineFrequencyType(this.currentFrequency)
 
     switch(frequencyType) {
       case FrequencyType.balanced: {

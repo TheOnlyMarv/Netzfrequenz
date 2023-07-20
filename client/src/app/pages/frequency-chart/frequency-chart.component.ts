@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import Chart from 'chart.js/auto';
+import Chart, { ChartData } from 'chart.js/auto';
 import { FrequencyChartService } from '../../services/frequency-chart/frequency-chart.service';
 import {formatDate} from '@angular/common';
 import { FreqReadingDto } from 'src/app/models/freq-reading-dto';
@@ -16,6 +16,7 @@ export class FrequencyChartComponent implements OnInit {
   public chart: any
   public errorMessage: string|undefined
   public limit: number = 60
+  private rawdata: any[] = []
   constructor(public service: FrequencyChartService) {}
 
   updateLimit(limit: number) {
@@ -31,10 +32,10 @@ export class FrequencyChartComponent implements OnInit {
         this.errorMessage = "Fehler beim Abruf der Daten";
       } else {
         this.errorMessage = undefined;
-        var browserLanguage = navigator.language;
+        this.rawdata = response;
         const labeldata: any[] = response?.map((x, i) => i == 0 ? 'jetzt' : new Date(x.Timestamp).toLocaleTimeString("de-DE"));
         const realdata: any[] = response?.map(x => x.Frequency);
-        var showEmergencyMeasures = false;
+        let showEmergencyMeasures = false;
         showEmergencyMeasures = realdata.some(x => (x > 51.5 || x < 49));
         this.createChart(labeldata.reverse(), realdata.reverse(), showEmergencyMeasures);
       }
@@ -46,7 +47,7 @@ export class FrequencyChartComponent implements OnInit {
     this.loadChart();
   }
 
-  createChart(labeldata: any, realdata: any, showEmergencyMeasures: boolean){
+  createChart(labeldata: any[], realdata: any[], showEmergencyMeasures: boolean){
     if (this.chart == null) {
       this.chart = new Chart("FrequencyChart", {
         type: 'line', 
@@ -62,8 +63,10 @@ export class FrequencyChartComponent implements OnInit {
           scales: {
             x: {
               ticks: {
-                autoSkipPadding: 35,
+                autoSkip: false,
+                minRotation: 0,
                 maxRotation: 0,
+                callback: (value) => this.parseDateAxis(value),
               }
             }
           }
@@ -72,7 +75,7 @@ export class FrequencyChartComponent implements OnInit {
     )
     }
 
-    var datasetData = [
+    const datasetData = [
       {
         label: "Netzfrequenz",
         data: realdata,
@@ -133,7 +136,7 @@ export class FrequencyChartComponent implements OnInit {
     ]
 
     if (showEmergencyMeasures) {
-      var blackoutsData = 
+      const blackoutsData = 
         {
           label: "Mögliche Stromausfälle",
           data: Array.apply(null, realdata).map(Number.prototype.valueOf, 51.5),
@@ -144,7 +147,7 @@ export class FrequencyChartComponent implements OnInit {
           backgroundColor: "rgb(251, 244, 226)",
           borderDash: [5],
         }
-      var disconnectData = 
+      const disconnectData = 
         {
           label: "Trennung aller Solaranlagen vom Netz",
           data: Array.apply(null, realdata).map(Number.prototype.valueOf, 49.0),
@@ -163,5 +166,28 @@ export class FrequencyChartComponent implements OnInit {
       datasets: datasetData,
     };
     this.chart.update();
+  }
+
+  private parseDateAxis(value: string | number, isShort: boolean = false): string | undefined {
+    if (typeof value === 'string')
+      value = parseFloat(value);
+      
+    const fulldata = this.rawdata?.map(x => new Date(x.Timestamp)).reverse();
+    let divider = 1;
+    if (this.limit == 60) {
+      divider = 3
+    } else if (this.limit == 30) {
+      divider = 2;
+    } else {
+      divider = 1;
+    }
+
+    if (value === fulldata.length -1) {
+      return "jetzt"
+    }
+    if (value % divider == 0 || value == 0)  {
+      return fulldata[value].toLocaleTimeString("de-DE");
+    }   
+    return undefined
   }
 }

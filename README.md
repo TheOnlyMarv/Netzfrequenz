@@ -48,14 +48,15 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 1. Design und Ausbau des Angular Frontends
 
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
+    - Zusätzlich zum aktuellen Wert in Klammer auch Zeit anzeigen mit Aktualisieren Button
     - Pop-up window soll auf Mitte der Seite erscheinen
     - ~~Erstellen der Maßnahmekategorien und Beschreibungen~~
     - ~~Design neue Startseite "Aktuell"~~
     - ~~Service der /update Endpunkt abfragt~~
     - ~~Bei Klick auf Frequenzwert: Öffnet pop-up Textfeld mit Informationen zu aktuellen Frequenz~~
 - Line-Chart:
-    - Erster Wert im Line-Chart 'jetzt' soll wieder angezeigt werden
     - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
+    - ~~Erster Wert im Line-Chart 'jetzt' soll wieder angezeigt werden~~
     - ~~Zeit soll in Lokalzeit dargestellt werden~~
 - Optional: 
     - Nav-Bar: Helle Farbe bei Hover und Klick
@@ -96,6 +97,8 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 2. Optimierung des Backends
 
+- Bei Db Request: Nur Daten zurückgeben, die innerhalb der letzten Minute sind.
+- Abruf der Daten für den Graph per Websocket.
 - Wechsel der Datenbank zu PostgreSQL und regelmäßige Löschung der Frequenzdaten, z.B. nach zwei Tagen.
 - ~~Speichern der Daten in UTC und automatische Konvertierung zu Lokalzeit~~
 - ~~Refaktorierung von `Progam.cs`: Aktuell findet der sekündliche Abruf der aktuellen Messwerte der Frequenz direkt in `Program.cs` statt. Diese Funktion sollte ausgelagert werden, kurzfristig innerhalb der Web-API.~~
