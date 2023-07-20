@@ -48,8 +48,8 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 1. Design und Ausbau des Angular Frontends
 
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
-    - Zusätzlich zum aktuellen Wert in Klammer auch Zeit anzeigen mit Aktualisieren Button
     - Pop-up window soll auf Mitte der Seite erscheinen
+    - ~~Zusätzlich zum aktuellen Wert in Klammer auch Zeit anzeigen mit Aktualisieren Button~~
     - ~~Erstellen der Maßnahmekategorien und Beschreibungen~~
     - ~~Design neue Startseite "Aktuell"~~
     - ~~Service der /update Endpunkt abfragt~~

@@ -35,7 +35,7 @@ export class FrequencyChartComponent implements OnInit {
         this.rawdata = response;
         const labeldata: any[] = response?.map((x, i) => i == 0 ? 'jetzt' : new Date(x.Timestamp).toLocaleTimeString("de-DE"));
         const realdata: any[] = response?.map(x => x.Frequency);
-        let showEmergencyMeasures = false;
+        let showEmergencyMeasures = true;
         showEmergencyMeasures = realdata.some(x => (x > 51.5 || x < 49));
         this.createChart(labeldata.reverse(), realdata.reverse(), showEmergencyMeasures);
       }
@@ -171,7 +171,7 @@ export class FrequencyChartComponent implements OnInit {
   private parseDateAxis(value: string | number, isShort: boolean = false): string | undefined {
     if (typeof value === 'string')
       value = parseFloat(value);
-      
+
     const fulldata = this.rawdata?.map(x => new Date(x.Timestamp)).reverse();
     let divider = 1;
     if (this.limit == 60) {

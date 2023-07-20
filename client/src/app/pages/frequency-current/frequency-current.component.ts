@@ -12,10 +12,11 @@ import { FrequencyCurrentService } from 'src/app/services/frequency-current/freq
 export class FrequencyCurrentComponent implements OnInit {
   public popup: any = false;
   public currentFrequency: any;
+  public currentFrequencyTime: any;
   public errorMessage: string|undefined;
   constructor(public service: FrequencyCurrentService) {}
 
-  ngOnInit(): void {
+  updateCurrentFrequency(): void {
     this.service.getFrequencyCurrentInfo().subscribe((response) => {
       if (response == undefined)
       {
@@ -23,8 +24,13 @@ export class FrequencyCurrentComponent implements OnInit {
       } else {
         this.errorMessage = undefined;
         this.currentFrequency = response.Frequency;
+        this.currentFrequencyTime = new Date(response.Timestamp);
       }
     })
+  }
+
+  ngOnInit(): void {
+    this.updateCurrentFrequency();
   }
 
   get getFrequencyInformation(): string {

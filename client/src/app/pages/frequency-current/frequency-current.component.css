@@ -6,8 +6,31 @@
     padding-bottom: 110px;
 }
 
+.freq-container h4 {
+  margin-top: 20px;
+}
+
 .freq-container h5 {
     color: red;
+}
+
+#current-frequency {
+  margin-top: 20px;
+}
+
+#current-frequency h1 {
+  display: inline;
+  color: darkgreen;
+  cursor: pointer;
+}
+
+#current-frequency h4 {
+  display: inline;
+}
+
+#current-frequency h4 i {
+  font-size: large;
+  cursor: pointer;
 }
 
 .overlay {
