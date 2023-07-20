@@ -31,7 +31,8 @@ export class FrequencyChartComponent implements OnInit {
         this.errorMessage = "Fehler beim Abruf der Daten";
       } else {
         this.errorMessage = undefined;
-        const labeldata: any[] = response?.map((x, i) => i == 0 ? 'jetzt' : formatDate(new Date(x.Timestamp), "HH:mm:ss", "de-DE").toString());
+        var browserLanguage = navigator.language;
+        const labeldata: any[] = response?.map((x, i) => i == 0 ? 'jetzt' : new Date(x.Timestamp).toLocaleTimeString("de-DE"));
         const realdata: any[] = response?.map(x => x.Frequency);
         var showEmergencyMeasures = false;
         showEmergencyMeasures = realdata.some(x => (x > 51.5 || x < 49));
@@ -76,9 +77,9 @@ export class FrequencyChartComponent implements OnInit {
         label: "Netzfrequenz",
         data: realdata,
         pointRadius: 2,
-        borderWidth: 3,
-        borderColor: "rgba(0,0,0,0.6)",
-        backgroundColor: "rgba(0,0,0.8)"
+        borderWidth: 2,
+        borderColor: "rgba(0,0,0,1)",
+        backgroundColor: "rgba(0,0,0,1)"
       },
       {
         label: "Richtwert",

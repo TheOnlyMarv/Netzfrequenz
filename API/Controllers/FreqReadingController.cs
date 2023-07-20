@@ -3,6 +3,7 @@ using DataAccess.Repository;
 using DataAccess.Entities;
 using Contract.DTOs;
 using Logic.Services.Abstractions;
+using System.Diagnostics;
 
 namespace API.Controllers
 {
@@ -23,7 +24,8 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FreqReadingDto>>> GetReadings(int limit)
         {
-            return Ok(await _service.GetReadings(limit));
+            var getReadings = await _service.GetReadings(limit);
+            return Ok(getReadings);
         }
 
         /// <summary>

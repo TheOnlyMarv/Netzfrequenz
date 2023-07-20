@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.IO.Compression;
 using System.Net.Cache;
 using System.Net.Http.Headers;
@@ -71,7 +72,7 @@ namespace Logic.Services
             var rgFrequency = new Regex(@"(?<=<f2>)(.*?)(?=<)");
             var rgTimestamp = new Regex(@"(?<=<z> )(.*?)(?=<)");
             var frequency = float.Parse(rgFrequency.Matches(respString)[0].Value);
-            var timestamp = DateTime.Parse(rgTimestamp.Matches(respString)[0].Value);
+            var timestamp = DateTimeOffset.Parse(rgTimestamp.Matches(respString)[0].Value, CultureInfo.GetCultureInfo("de-DE"), DateTimeStyles.AssumeUniversal);
             var newReading = new FreqReading{ Timestamp = timestamp, Frequency = frequency};
             return newReading;
         }

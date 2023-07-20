@@ -53,11 +53,13 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
     - ~~Design neue Startseite "Aktuell"~~
     - ~~Service der /update Endpunkt abfragt~~
     - ~~Bei Klick auf Frequenzwert: Öffnet pop-up Textfeld mit Informationen zu aktuellen Frequenz~~
-- Erster Wert im Line-Chart 'jetzt' soll wieder angezeigt werden
-- Nav-Bar: Helle Farbe bei Hover und Klick
-- Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
-- Evtl. blaues Design mit anderem Headerbild
+- Line-Chart:
+    - Erster Wert im Line-Chart 'jetzt' soll wieder angezeigt werden
+    - Chart an der oberen Grenze um 0.05Hz nach letzter Linie weiterführen
+    - ~~Zeit soll in Lokalzeit dargestellt werden~~
 - Optional: 
+    - Nav-Bar: Helle Farbe bei Hover und Klick
+    - Evtl. blaues Design mit anderem Headerbild
     - Option, historische Daten abzurufen (z.B. vor einer Minute, vor fünf Minuten)
     - Hinzufügen einer dritten Seite `Informationen` mit ausführlicheren Informationen zu den Balancemaßnahmen
     - Längerfristig könnte die regelmäßige Speicherung der Daten vom Frontend aus gesteuert werden, indem der interne Endpoint `https://localhost:5001/api/frequency/update` sekündlich aufgerufen wird. Alternativ ist auch der Einsatz von Websockets denkbar. 
@@ -95,6 +97,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 2. Optimierung des Backends
 
 - Wechsel der Datenbank zu PostgreSQL und regelmäßige Löschung der Frequenzdaten, z.B. nach zwei Tagen.
+- ~~Speichern der Daten in UTC und automatische Konvertierung zu Lokalzeit~~
 - ~~Refaktorierung von `Progam.cs`: Aktuell findet der sekündliche Abruf der aktuellen Messwerte der Frequenz direkt in `Program.cs` statt. Diese Funktion sollte ausgelagert werden, kurzfristig innerhalb der Web-API.~~
 - ~~Refaktorierung des ProjektAufbaus:~~
     - ~~Aufspalten in einzelne Projects~~

@@ -31,7 +31,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Readings");
+                    b.ToTable("Readings", (string)null);
                 });
 #pragma warning restore 612, 618
         }
