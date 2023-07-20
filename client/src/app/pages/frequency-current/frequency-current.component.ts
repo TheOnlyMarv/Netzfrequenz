@@ -33,6 +33,43 @@ export class FrequencyCurrentComponent implements OnInit {
     this.updateCurrentFrequency();
   }
 
+  getFrequencyColor(): string {
+    let frequencyType = this.determineFrequencyType(this.currentFrequency)
+    
+    switch(frequencyType) {
+      case FrequencyType.balanced: {
+        return 'color: rgb(50,205,50)';
+      }
+      case FrequencyType.deadbandNegative: {
+        return 'color: rgb(39,135,84)';
+      }
+      case FrequencyType.negativeBalancing: {
+        return 'color: rgb(255, 200, 0)';
+      }
+      case FrequencyType.reduceSupply: {
+        return 'color: darkorange';
+      }
+      case FrequencyType.disconnectSuppliers: {
+        return 'color: red';
+      }
+      case FrequencyType.deadbandPositive: {
+        return 'color: rgb(39,135,84)';
+      }
+      case FrequencyType.positivBalancing: {
+        return 'color: rgb(255, 200, 0)';
+      }
+      case FrequencyType.increaseSupply: {
+        return 'color: darkorange';
+      }
+      case FrequencyType.reduceDemand: {
+        return 'color: red';
+      }
+      default: {
+        return 'color:black';
+      }
+    }
+  }
+
   get getFrequencyInformation(): string {
     let direction: string
     let amount: string
@@ -63,13 +100,13 @@ export class FrequencyCurrentComponent implements OnInit {
       case FrequencyType.reduceSupply: {
         direction = "über";
         amount = "zu viel";
-        explanation = "Die Überfrequenz ist aktuell so hoch, dass sie nicht mehr allein über die sogenannte Regelleistung ausbalanciert werden kann. Bestimmte Erzeugertypen, insbesondere Solaranlagen, müssen ihre geplante Stromerzeugung stark reduzieren.";
+        explanation = "Die <b>Überfrequenz</b> ist aktuell so hoch, dass sie nicht mehr allein über die sogenannte Regelleistung ausbalanciert werden kann. Bestimmte Erzeugertypen, insbesondere Solaranlagen, müssen ihre geplante <b>Stromerzeugung stark reduzieren</b>.";
         break;
       }
       case FrequencyType.disconnectSuppliers: {
         direction = "über";
         amount = "zu viel";
-        explanation = "Die Überfrequenz ist aktuell so hoch, dass sie nicht mehr allein über die sogenannte Regelleistung imd Reduzierung der Einspeisung ausbalanciert werden kann. Bestimmte Erzeugertypen, insbesondere Solaranlagen, werden nun komplett vom Netz genommen.";
+        explanation = "Die <b>Überfrequenz</b> ist aktuell so hoch, dass sie nicht mehr allein über die sogenannte Regelleistung imd Reduzierung der Einspeisung ausbalanciert werden kann. Bestimmte Erzeugertypen, insbesondere Solaranlagen, werden nun <b>komplett vom Netz genommen<b>.";
         break;
       }
       case FrequencyType.deadbandPositive: {
@@ -93,7 +130,7 @@ export class FrequencyCurrentComponent implements OnInit {
       case FrequencyType.reduceDemand: {
         direction = "unter";
         amount = "zu wenig";
-        explanation = "Die Frequenz ist aktuell sehr niedrig (<b>Unterfrequenz</b>), sodass sie nicht mehr allein über die sogenannte Regelleistung und andere Leistungsreserven ausbalanciert werden kann. Die Folge sind ungeplante Stromausfälle.";
+        explanation = "Die Frequenz ist aktuell sehr niedrig (<b>Unterfrequenz</b>), sodass sie nicht mehr allein über die sogenannte Regelleistung und andere Leistungsreserven ausbalanciert werden kann. Die Folge sind <b>ungeplante Stromausfälle</b>.";
         break;
       }
       default: {
@@ -116,9 +153,9 @@ export class FrequencyCurrentComponent implements OnInit {
       return FrequencyType.reduceSupply
     } else if (value > 51.5 ) {
       return FrequencyType.disconnectSuppliers
-    } else if (value < 50 && value >= 49.08) {
+    } else if (value < 50 && value >= 49.98) {
       return FrequencyType.deadbandPositive
-    } else if (value < 49.08 && value >= 49.8) {
+    } else if (value < 49.98 && value >= 49.8) {
       return FrequencyType.positivBalancing
     } else if (value < 49.8 && value >= 49) {
       return FrequencyType.increaseSupply

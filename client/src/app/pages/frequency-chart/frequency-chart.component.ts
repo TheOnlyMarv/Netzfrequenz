@@ -35,7 +35,7 @@ export class FrequencyChartComponent implements OnInit {
         this.rawdata = response;
         const labeldata: any[] = response?.map((x, i) => i == 0 ? 'jetzt' : new Date(x.Timestamp).toLocaleTimeString("de-DE"));
         const realdata: any[] = response?.map(x => x.Frequency);
-        let showEmergencyMeasures = true;
+        let showEmergencyMeasures = false;
         showEmergencyMeasures = realdata.some(x => (x > 51.5 || x < 49));
         this.createChart(labeldata.reverse(), realdata.reverse(), showEmergencyMeasures);
       }
@@ -90,7 +90,7 @@ export class FrequencyChartComponent implements OnInit {
         fill: false,
         pointRadius: 0.1,
         borderWidth: 2,
-        borderColor: "rgba(50,205,50,0.8)",
+        borderColor: "limegreen",
         backgroundColor: "rgba(50,205,50,0.8)",
       },
       {
@@ -99,7 +99,7 @@ export class FrequencyChartComponent implements OnInit {
         fill: false,
         pointRadius: 0.1,
         borderWidth: 2,
-        borderColor: "rgba(255,165,0,0.5)",
+        borderColor: "rgb(255, 200, 0)",
         backgroundColor: "rgb(251, 244, 226)",
         borderDash: [5]
       },
@@ -109,7 +109,7 @@ export class FrequencyChartComponent implements OnInit {
         fill: false,
         pointRadius: 0.1,
         borderWidth: 2,
-        borderColor: "rgba(255,165,0,0.5)",
+        borderColor: "rgb(255, 200, 0)",
         backgroundColor: "rgb(251, 244, 226)",
         borderDash: [20, 5]
       },
@@ -119,7 +119,7 @@ export class FrequencyChartComponent implements OnInit {
         fill: false,
         pointRadius: 0.1,
         borderWidth: 2,
-        borderColor: "rgba(255,99,71,0.7)",
+        borderColor: "darkorange",
         backgroundColor: "rgb(251, 244, 226)",
         borderDash: [5]
       },
@@ -129,7 +129,7 @@ export class FrequencyChartComponent implements OnInit {
         fill: false,
         pointRadius: 0.1,
         borderWidth: 2,
-        borderColor: "rgba(255,99,71,0.7)",
+        borderColor: "darkorange",
         backgroundColor: "rgb(251, 244, 226)",
         borderDash: [20, 5]
       },
@@ -175,7 +175,7 @@ export class FrequencyChartComponent implements OnInit {
     const fulldata = this.rawdata?.map(x => new Date(x.Timestamp)).reverse();
     let divider = 1;
     if (this.limit == 60) {
-      divider = 3
+      divider = 4;
     } else if (this.limit == 30) {
       divider = 2;
     } else {

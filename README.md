@@ -49,6 +49,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
     - Pop-up window soll auf Mitte der Seite erscheinen
+    - ~~Farbe der Frequenzzahl ändert sich entsprechend der Höhe~~
     - ~~Zusätzlich zum aktuellen Wert in Klammer auch Zeit anzeigen mit Aktualisieren Button~~
     - ~~Erstellen der Maßnahmekategorien und Beschreibungen~~
     - ~~Design neue Startseite "Aktuell"~~
